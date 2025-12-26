@@ -1,0 +1,340 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* FFXIV-inspired base styles */
+body {
+  background: linear-gradient(180deg, #0c0c14 0%, #121220 50%, #0a0a12 100%);
+  color: #e8e4dc;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Cinzel', serif;
+  color: #f0ebe0;
+}
+
+/* FFXIV UI Card - mimics game windows */
+.card {
+  background: linear-gradient(180deg, rgba(30, 30, 45, 0.95) 0%, rgba(20, 20, 35, 0.98) 100%);
+  border: 1px solid rgba(80, 75, 65, 0.6);
+  border-radius: 4px;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* FFXIV-style header bar */
+.ffxiv-header {
+  background: linear-gradient(180deg, #2a2a3d 0%, #1e1e2e 100%);
+  border-bottom: 2px solid #3d3d50;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Input fields - FFXIV style */
+.input-field {
+  background: rgba(10, 10, 18, 0.8);
+  border: 1px solid rgba(80, 75, 65, 0.5);
+  border-radius: 3px;
+  padding: 0.5rem 1rem;
+  color: #e8e4dc;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #c9a227;
+  box-shadow: 0 0 0 1px #c9a227, 0 0 8px rgba(201, 162, 39, 0.3);
+}
+
+.select-field {
+  background: rgba(10, 10, 18, 0.8);
+  border: 1px solid rgba(80, 75, 65, 0.5);
+  border-radius: 3px;
+  padding: 0.5rem 2.5rem 0.5rem 1rem;
+  color: #e8e4dc;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%23a09080' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 1.5rem;
+}
+
+.select-field:focus {
+  outline: none;
+  border-color: #c9a227;
+  box-shadow: 0 0 0 1px #c9a227;
+}
+
+/* Profit Leader - FFXIV gold highlight */
+.profit-leader {
+  background: linear-gradient(90deg,
+      rgba(201, 162, 39, 0.18) 0%,
+      rgba(180, 140, 30, 0.08) 50%,
+      rgba(201, 162, 39, 0.18) 100%);
+}
+
+.profit-leader td:first-child {
+  border-left: 3px solid #c9a227;
+}
+
+.profit-leader td:last-child {
+  border-right: 3px solid #c9a227;
+}
+
+@keyframes shimmer {
+
+  0%,
+  100% {
+    background-position: 200% 0;
+  }
+
+  50% {
+    background-position: -200% 0;
+  }
+}
+
+/* Badges - FFXIV style */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-miner {
+  background: rgba(255, 140, 60, 0.15);
+  color: #ffa54f;
+  border: 1px solid rgba(255, 140, 60, 0.4);
+}
+
+.badge-botanist {
+  background: rgba(120, 200, 80, 0.15);
+  color: #90d050;
+  border: 1px solid rgba(120, 200, 80, 0.4);
+}
+
+/* Class badges for gathering jobs */
+.class-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 0.15rem 0.4rem;
+  border-radius: 2px;
+  font-size: 0.65rem;
+  font-weight: 600;
+}
+
+.class-miner {
+  background: rgba(255, 140, 60, 0.15);
+  color: #ffa54f;
+  border: 1px solid rgba(255, 140, 60, 0.4);
+}
+
+.class-botanist {
+  background: rgba(120, 200, 80, 0.15);
+  color: #90d050;
+  border: 1px solid rgba(120, 200, 80, 0.4);
+}
+
+/* Teleport copy button */
+.teleport-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0.25rem 0.5rem;
+  background: rgba(80, 120, 200, 0.15);
+  border: 1px solid rgba(80, 120, 200, 0.4);
+  border-radius: 3px;
+  color: #6eb5ff;
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.teleport-btn:hover {
+  background: rgba(80, 120, 200, 0.3);
+  border-color: rgba(80, 120, 200, 0.6);
+}
+
+.badge-active {
+  background: rgba(80, 200, 120, 0.2);
+  color: #50c878;
+  border: 1px solid rgba(80, 200, 120, 0.5);
+}
+
+.badge-upcoming {
+  background: rgba(255, 200, 60, 0.15);
+  color: #ffc83d;
+  border: 1px solid rgba(255, 200, 60, 0.4);
+}
+
+/* Expansion badges - FFXIV colors */
+.expansion-badge {
+  font-size: 9px;
+  padding: 0.15rem 0.4rem;
+  border-radius: 2px;
+  font-weight: 700;
+}
+
+.expansion-DT {
+  background: rgba(148, 80, 200, 0.2);
+  color: #b88adc;
+  border: 1px solid rgba(148, 80, 200, 0.4);
+}
+
+.expansion-EW {
+  background: rgba(70, 130, 200, 0.2);
+  color: #6eb5ff;
+  border: 1px solid rgba(70, 130, 200, 0.4);
+}
+
+.expansion-ShB {
+  background: rgba(100, 90, 180, 0.2);
+  color: #9a90d0;
+  border: 1px solid rgba(100, 90, 180, 0.4);
+}
+
+.expansion-SB {
+  background: rgba(200, 70, 70, 0.2);
+  color: #e07070;
+  border: 1px solid rgba(200, 70, 70, 0.4);
+}
+
+.expansion-HW {
+  background: rgba(50, 160, 200, 0.2);
+  color: #50c8e0;
+  border: 1px solid rgba(50, 160, 200, 0.4);
+}
+
+.expansion-ARR {
+  background: rgba(120, 110, 100, 0.2);
+  color: #b0a090;
+  border: 1px solid rgba(120, 110, 100, 0.4);
+}
+
+/* Profit Leader badge */
+.profit-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0.25rem 0.6rem;
+  background: linear-gradient(135deg, #c9a227 0%, #a08020 100%);
+  color: #1a1a24;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* FFXIV Gold text */
+.text-gold {
+  color: #c9a227;
+}
+
+.text-gold-bright {
+  color: #e8c840;
+  text-shadow: 0 0 8px rgba(232, 200, 64, 0.4);
+}
+
+/* Table styles */
+.ffxiv-table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.ffxiv-table thead {
+  background: linear-gradient(180deg, #252535 0%, #1a1a28 100%);
+}
+
+.ffxiv-table th {
+  color: #a09080;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(80, 75, 65, 0.5);
+}
+
+.ffxiv-table tbody tr {
+  background: transparent;
+  transition: background-color 0.15s;
+}
+
+.ffxiv-table tbody tr:hover:not(.profit-leader) {
+  background: rgba(60, 60, 80, 0.3);
+}
+
+.ffxiv-table td {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid rgba(60, 55, 50, 0.3);
+  vertical-align: middle;
+}
+
+/* Gil display */
+.gil-amount {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.gil-hq {
+  color: #50c878;
+}
+
+.gil-nq {
+  color: #a09080;
+}
+
+/* Clock styles */
+.eorzea-clock {
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #e8c840;
+  text-shadow:
+    0 0 10px rgba(232, 200, 64, 0.5),
+    0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.clock-seconds {
+  color: #a09080;
+  font-size: 1.25rem;
+}
+
+/* Progress bar */
+.progress-bar {
+  height: 4px;
+  background: rgba(40, 40, 55, 0.8);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #c9a227 0%, #e8c840 50%, #c9a227 100%);
+  background-size: 200% 100%;
+  animation: progress-shimmer 2s linear infinite;
+}
+
+@keyframes progress-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}

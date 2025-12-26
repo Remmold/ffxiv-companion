@@ -1,0 +1,177 @@
+[
+    {
+        "itemId": 44199,
+        "itemName": "Zorgor Condor",
+        "fishingHole": "The Outskirts",
+        "zone": "Shaaloani",
+        "nearestAetheryte": "Hhusatahwi",
+        "coordinates": "X: 26.5, Y: 18.2",
+        "etSpawnStart": 4,
+        "etSpawnEnd": 8,
+        "bait": [
+            "Versatile Lure"
+        ],
+        "expansion": "DT",
+        "isCollectable": false,
+        "weather": null,
+        "notes": "Dawntrail big fish"
+    },
+    {
+        "itemId": 44200,
+        "itemName": "Ttira Root Skipper",
+        "fishingHole": "Kozama'uka Rivers",
+        "zone": "Kozama'uka",
+        "nearestAetheryte": "Ok'hanu",
+        "coordinates": "X: 10.3, Y: 25.1",
+        "etSpawnStart": 18,
+        "etSpawnEnd": 22,
+        "bait": [
+            "Versatile Lure"
+        ],
+        "expansion": "DT",
+        "isCollectable": false,
+        "weather": null,
+        "notes": "Dawntrail river fish"
+    },
+    {
+        "itemId": 36467,
+        "itemName": "Listracanthus",
+        "fishingHole": "Ala Gannha",
+        "zone": "The Peaks",
+        "nearestAetheryte": "Ala Ghiri",
+        "coordinates": "X: 23.5, Y: 5.0",
+        "etSpawnStart": 16,
+        "etSpawnEnd": 20,
+        "bait": [
+            "Stonefly Nymph"
+        ],
+        "expansion": "SB",
+        "isCollectable": false,
+        "weather": null,
+        "notes": "Stormblood legendary"
+    },
+    {
+        "itemId": 38936,
+        "itemName": "Ondo Sigh",
+        "fishingHole": "The Isle of Ken",
+        "zone": "The Tempest",
+        "nearestAetheryte": "The Ondo Cups",
+        "coordinates": "X: 35.4, Y: 28.5",
+        "etSpawnStart": 8,
+        "etSpawnEnd": 12,
+        "bait": [
+            "Short Bill Minnow"
+        ],
+        "expansion": "ShB",
+        "isCollectable": false,
+        "weather": null,
+        "notes": "Shadowbringers underwater"
+    },
+    {
+        "itemId": 36468,
+        "itemName": "Argonauta Argo",
+        "fishingHole": "Shoal Rock",
+        "zone": "Kholusia",
+        "nearestAetheryte": "Stilltide",
+        "coordinates": "X: 16.7, Y: 23.5",
+        "etSpawnStart": 0,
+        "etSpawnEnd": 4,
+        "bait": [
+            "Squid Strip"
+        ],
+        "expansion": "ShB",
+        "isCollectable": false,
+        "weather": [
+            "Gales"
+        ],
+        "notes": "Requires Gales weather"
+    },
+    {
+        "itemId": 41269,
+        "itemName": "Nosceasaur",
+        "fishingHole": "The Northern Empty",
+        "zone": "Garlemald",
+        "nearestAetheryte": "Camp Broken Glass",
+        "coordinates": "X: 18.9, Y: 14.2",
+        "etSpawnStart": 12,
+        "etSpawnEnd": 16,
+        "bait": [
+            "Red Balloon"
+        ],
+        "expansion": "EW",
+        "isCollectable": false,
+        "weather": null,
+        "notes": "Endwalker rare"
+    },
+    {
+        "itemId": 41270,
+        "itemName": "Fleeting Brand",
+        "fishingHole": "The Font of Maya",
+        "zone": "Labyrinthos",
+        "nearestAetheryte": "Aporia",
+        "coordinates": "X: 28.5, Y: 12.8",
+        "etSpawnStart": 20,
+        "etSpawnEnd": 0,
+        "bait": [
+            "Versatile Lure"
+        ],
+        "expansion": "EW",
+        "isCollectable": false,
+        "weather": null,
+        "notes": "Endwalker legendary"
+    },
+    {
+        "itemId": 29779,
+        "itemName": "Warden of the Seven Hues",
+        "fishingHole": "The Thaliak River",
+        "zone": "The Dravanian Hinterlands",
+        "nearestAetheryte": "Idyllshire",
+        "coordinates": "X: 12.5, Y: 18.8",
+        "etSpawnStart": 10,
+        "etSpawnEnd": 14,
+        "bait": [
+            "Brute Leech"
+        ],
+        "expansion": "HW",
+        "isCollectable": false,
+        "weather": [
+            "Rain",
+            "Showers"
+        ],
+        "notes": "Requires Rain/Showers"
+    },
+    {
+        "itemId": 20018,
+        "itemName": "Captain Nemo",
+        "fishingHole": "The Southern Rhotano Sea",
+        "zone": "Rhotano Sea",
+        "nearestAetheryte": "Limsa Lominsa",
+        "coordinates": "Aboard Ship",
+        "etSpawnStart": 6,
+        "etSpawnEnd": 10,
+        "bait": [
+            "Worm of Nym"
+        ],
+        "expansion": "ARR",
+        "isCollectable": false,
+        "weather": null,
+        "notes": "Requires Unfading Glory"
+    },
+    {
+        "itemId": 8762,
+        "itemName": "Nepto Dragon",
+        "fishingHole": "The Rhotano Sea",
+        "zone": "Western La Noscea",
+        "nearestAetheryte": "Aleport",
+        "coordinates": "X: 16.5, Y: 14.0",
+        "etSpawnStart": 2,
+        "etSpawnEnd": 6,
+        "bait": [
+            "Rat Tail"
+        ],
+        "expansion": "ARR",
+        "isCollectable": false,
+        "weather": null,
+        "notes": "Classic ARR legendary"
+    }
+]

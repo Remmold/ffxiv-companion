@@ -1,0 +1,426 @@
+[
+    {
+        "recipeId": 35000,
+        "outputItemId": 44099,
+        "outputName": "Grade 8 Tincture of Strength",
+        "outputQuantity": 3,
+        "craftingClass": "Alchemist",
+        "level": 100,
+        "category": "Consumable",
+        "materials": [
+            {
+                "itemId": 44175,
+                "name": "Turali Mistletoe",
+                "quantity": 2
+            },
+            {
+                "itemId": 44176,
+                "name": "Duskcourt Fish Oil",
+                "quantity": 2
+            },
+            {
+                "itemId": 44177,
+                "name": "Mamook Pear Vinegar",
+                "quantity": 2
+            },
+            {
+                "itemId": 8,
+                "name": "Water Crystal",
+                "quantity": 6
+            }
+        ]
+    },
+    {
+        "recipeId": 35001,
+        "outputItemId": 44100,
+        "outputName": "Grade 8 Tincture of Dexterity",
+        "outputQuantity": 3,
+        "craftingClass": "Alchemist",
+        "level": 100,
+        "category": "Consumable",
+        "materials": [
+            {
+                "itemId": 44175,
+                "name": "Turali Mistletoe",
+                "quantity": 2
+            },
+            {
+                "itemId": 44176,
+                "name": "Duskcourt Fish Oil",
+                "quantity": 2
+            },
+            {
+                "itemId": 44177,
+                "name": "Mamook Pear Vinegar",
+                "quantity": 2
+            },
+            {
+                "itemId": 8,
+                "name": "Water Crystal",
+                "quantity": 6
+            }
+        ]
+    },
+    {
+        "recipeId": 35002,
+        "outputItemId": 44101,
+        "outputName": "Grade 8 Tincture of Intelligence",
+        "outputQuantity": 3,
+        "craftingClass": "Alchemist",
+        "level": 100,
+        "category": "Consumable",
+        "materials": [
+            {
+                "itemId": 44175,
+                "name": "Turali Mistletoe",
+                "quantity": 2
+            },
+            {
+                "itemId": 44176,
+                "name": "Duskcourt Fish Oil",
+                "quantity": 2
+            },
+            {
+                "itemId": 44177,
+                "name": "Mamook Pear Vinegar",
+                "quantity": 2
+            },
+            {
+                "itemId": 8,
+                "name": "Water Crystal",
+                "quantity": 6
+            }
+        ]
+    },
+    {
+        "recipeId": 35010,
+        "outputItemId": 44110,
+        "outputName": "Stuffed Peppers",
+        "outputQuantity": 3,
+        "craftingClass": "Culinarian",
+        "level": 100,
+        "category": "Consumable",
+        "materials": [
+            {
+                "itemId": 44178,
+                "name": "Turali Corn",
+                "quantity": 2
+            },
+            {
+                "itemId": 44179,
+                "name": "Kozama'uka Tomato",
+                "quantity": 2
+            },
+            {
+                "itemId": 44180,
+                "name": "Wild Onion",
+                "quantity": 1
+            },
+            {
+                "itemId": 9,
+                "name": "Fire Crystal",
+                "quantity": 6
+            }
+        ]
+    },
+    {
+        "recipeId": 35011,
+        "outputItemId": 44111,
+        "outputName": "Fish and Chips",
+        "outputQuantity": 3,
+        "craftingClass": "Culinarian",
+        "level": 100,
+        "category": "Consumable",
+        "materials": [
+            {
+                "itemId": 44181,
+                "name": "Zorgor Sole",
+                "quantity": 2
+            },
+            {
+                "itemId": 44178,
+                "name": "Turali Corn",
+                "quantity": 2
+            },
+            {
+                "itemId": 44182,
+                "name": "Olive Oil",
+                "quantity": 1
+            },
+            {
+                "itemId": 9,
+                "name": "Fire Crystal",
+                "quantity": 6
+            }
+        ]
+    },
+    {
+        "recipeId": 35015,
+        "outputItemId": 44115,
+        "outputName": "Savage Aim Materia XII",
+        "outputQuantity": 1,
+        "craftingClass": "Alchemist",
+        "level": 100,
+        "category": "Materia",
+        "materials": [
+            {
+                "itemId": 44183,
+                "name": "Turali Alkahest",
+                "quantity": 3
+            },
+            {
+                "itemId": 44184,
+                "name": "Materia Melder's Catalyst",
+                "quantity": 1
+            },
+            {
+                "itemId": 8,
+                "name": "Water Crystal",
+                "quantity": 8
+            }
+        ]
+    },
+    {
+        "recipeId": 33000,
+        "outputItemId": 39730,
+        "outputName": "Grade 7 Tincture of Strength",
+        "outputQuantity": 3,
+        "craftingClass": "Alchemist",
+        "level": 90,
+        "category": "Consumable",
+        "materials": [
+            {
+                "itemId": 36200,
+                "name": "Berkanan Sap",
+                "quantity": 2
+            },
+            {
+                "itemId": 36201,
+                "name": "Sykon Bavarois",
+                "quantity": 2
+            },
+            {
+                "itemId": 8,
+                "name": "Water Crystal",
+                "quantity": 5
+            }
+        ]
+    },
+    {
+        "recipeId": 33005,
+        "outputItemId": 39735,
+        "outputName": "Pumpkin Potage",
+        "outputQuantity": 3,
+        "craftingClass": "Culinarian",
+        "level": 90,
+        "category": "Consumable",
+        "materials": [
+            {
+                "itemId": 36210,
+                "name": "Pumpkin",
+                "quantity": 2
+            },
+            {
+                "itemId": 36211,
+                "name": "Heavy Cream",
+                "quantity": 2
+            },
+            {
+                "itemId": 36212,
+                "name": "Star Anise",
+                "quantity": 1
+            },
+            {
+                "itemId": 9,
+                "name": "Fire Crystal",
+                "quantity": 5
+            }
+        ]
+    },
+    {
+        "recipeId": 30100,
+        "outputItemId": 37500,
+        "outputName": "Rinascita Sword",
+        "outputQuantity": 1,
+        "craftingClass": "Blacksmith",
+        "level": 90,
+        "category": "Weapon",
+        "materials": [
+            {
+                "itemId": 37550,
+                "name": "Immutable Solution",
+                "quantity": 1
+            },
+            {
+                "itemId": 37551,
+                "name": "Titanium Alloy Ingot",
+                "quantity": 3
+            },
+            {
+                "itemId": 37552,
+                "name": "Enchanted High Durium Ink",
+                "quantity": 1
+            },
+            {
+                "itemId": 10,
+                "name": "Earth Crystal",
+                "quantity": 6
+            }
+        ]
+    },
+    {
+        "recipeId": 30110,
+        "outputItemId": 37510,
+        "outputName": "Rinascita Shield",
+        "outputQuantity": 1,
+        "craftingClass": "Armorer",
+        "level": 90,
+        "category": "Armor",
+        "materials": [
+            {
+                "itemId": 37550,
+                "name": "Immutable Solution",
+                "quantity": 1
+            },
+            {
+                "itemId": 37551,
+                "name": "Titanium Alloy Ingot",
+                "quantity": 2
+            },
+            {
+                "itemId": 37553,
+                "name": "Integral Leather",
+                "quantity": 1
+            },
+            {
+                "itemId": 11,
+                "name": "Ice Crystal",
+                "quantity": 6
+            }
+        ]
+    },
+    {
+        "recipeId": 30120,
+        "outputItemId": 37520,
+        "outputName": "Rinascita Staff",
+        "outputQuantity": 1,
+        "craftingClass": "Carpenter",
+        "level": 90,
+        "category": "Weapon",
+        "materials": [
+            {
+                "itemId": 37550,
+                "name": "Immutable Solution",
+                "quantity": 1
+            },
+            {
+                "itemId": 37554,
+                "name": "Integral Lumber",
+                "quantity": 3
+            },
+            {
+                "itemId": 37555,
+                "name": "Ilmenite Ore",
+                "quantity": 2
+            },
+            {
+                "itemId": 12,
+                "name": "Wind Crystal",
+                "quantity": 6
+            }
+        ]
+    },
+    {
+        "recipeId": 30130,
+        "outputItemId": 37530,
+        "outputName": "Rinascita Ring",
+        "outputQuantity": 1,
+        "craftingClass": "Goldsmith",
+        "level": 90,
+        "category": "Accessory",
+        "materials": [
+            {
+                "itemId": 37550,
+                "name": "Immutable Solution",
+                "quantity": 1
+            },
+            {
+                "itemId": 37556,
+                "name": "Integral Nugget",
+                "quantity": 2
+            },
+            {
+                "itemId": 37557,
+                "name": "Ruthenium Ingot",
+                "quantity": 1
+            },
+            {
+                "itemId": 13,
+                "name": "Lightning Crystal",
+                "quantity": 6
+            }
+        ]
+    },
+    {
+        "recipeId": 30140,
+        "outputItemId": 37540,
+        "outputName": "Rinascita Coat",
+        "outputQuantity": 1,
+        "craftingClass": "Weaver",
+        "level": 90,
+        "category": "Armor",
+        "materials": [
+            {
+                "itemId": 37550,
+                "name": "Immutable Solution",
+                "quantity": 1
+            },
+            {
+                "itemId": 37558,
+                "name": "Integral Cloth",
+                "quantity": 3
+            },
+            {
+                "itemId": 37553,
+                "name": "Integral Leather",
+                "quantity": 1
+            },
+            {
+                "itemId": 8,
+                "name": "Water Crystal",
+                "quantity": 6
+            }
+        ]
+    },
+    {
+        "recipeId": 30150,
+        "outputItemId": 37545,
+        "outputName": "Rinascita Gloves",
+        "outputQuantity": 1,
+        "craftingClass": "Leatherworker",
+        "level": 90,
+        "category": "Armor",
+        "materials": [
+            {
+                "itemId": 37550,
+                "name": "Immutable Solution",
+                "quantity": 1
+            },
+            {
+                "itemId": 37553,
+                "name": "Integral Leather",
+                "quantity": 3
+            },
+            {
+                "itemId": 37558,
+                "name": "Integral Cloth",
+                "quantity": 1
+            },
+            {
+                "itemId": 10,
+                "name": "Earth Crystal",
+                "quantity": 6
+            }
+        ]
+    }
+]

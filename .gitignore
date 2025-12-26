@@ -1,0 +1,107 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.egg-info/
+.eggs/
+*.egg
+
+# Build output
+dist/
+build/
+*.manifest
+*.spec
+
+# Environment files
+.env
+.env.local
+.env.*.local
+.env.production
+venv/
+.venv/
+env/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pip-log.txt
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE / Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+.project
+.settings/
+*.code-workspace
+
+# Test coverage
+coverage/
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+nosetests.xml
+coverage.xml
+
+# Caches
+.cache/
+*.cache
+.parcel-cache/
+.eslintcache
+.stylelintcache
+
+# Vite specific
+*.local
+
+# Python
+*.pyo
+*.pyd
+.installed.cfg
+pip-wheel-metadata/
+share/python-wheels/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local development
+*.local.json
+local_settings.py
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+*~
+
+# Package locks (optional - uncomment if you want to ignore)
+# package-lock.json
+# yarn.lock
+
+# Debug
+.nyc_output/

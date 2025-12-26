@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700"/>
+      <stop offset="50%" style="stop-color:#d4af37"/>
+      <stop offset="100%" style="stop-color:#b8860b"/>
+    </linearGradient>
+  </defs>
+  <!-- Pickaxe/Hammer shape -->
+  <path fill="url(#goldGrad)" d="M75 15 L85 25 L60 50 L55 45 Z"/>
+  <path fill="url(#goldGrad)" d="M25 15 L15 25 L40 50 L45 45 Z"/>
+  <!-- Central gem -->
+  <polygon fill="url(#goldGrad)" points="50,20 65,40 50,85 35,40"/>
+  <!-- Sparkles -->
+  <circle fill="#fff" cx="20" cy="30" r="2" opacity="0.8"/>
+  <circle fill="#fff" cx="80" cy="30" r="2" opacity="0.8"/>
+  <circle fill="#fff" cx="50" cy="10" r="3" opacity="0.9"/>
+</svg>

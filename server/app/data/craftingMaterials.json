@@ -1,0 +1,1898 @@
+[
+  {
+    "itemId": 10,
+    "name": "Wind Crystal",
+    "expansion": "ShB",
+    "usageCount": 112
+  },
+  {
+    "itemId": 11,
+    "name": "Earth Crystal",
+    "expansion": "ShB",
+    "usageCount": 84
+  },
+  {
+    "itemId": 8,
+    "name": "Fire Crystal",
+    "expansion": "ShB",
+    "usageCount": 84
+  },
+  {
+    "itemId": 9,
+    "name": "Ice Crystal",
+    "expansion": "ShB",
+    "usageCount": 56
+  },
+  {
+    "itemId": 12,
+    "name": "Lightning Crystal",
+    "expansion": "ShB",
+    "usageCount": 56
+  },
+  {
+    "itemId": 13,
+    "name": "Water Crystal",
+    "expansion": "ShB",
+    "usageCount": 56
+  },
+  {
+    "itemId": 12562,
+    "name": "Archaeornis Leather",
+    "expansion": "HW",
+    "usageCount": 11
+  },
+  {
+    "itemId": 44012,
+    "name": "Black Star",
+    "expansion": "DT",
+    "usageCount": 10
+  },
+  {
+    "itemId": 12518,
+    "name": "Mythrite Nugget",
+    "expansion": "HW",
+    "usageCount": 10
+  },
+  {
+    "itemId": 44001,
+    "name": "Ra'Kaznar Ingot",
+    "expansion": "DT",
+    "usageCount": 9
+  },
+  {
+    "itemId": 36172,
+    "name": "Chondrite Ingot",
+    "expansion": "EW",
+    "usageCount": 8
+  },
+  {
+    "itemId": 36251,
+    "name": "Ophiotauros Leather",
+    "expansion": "EW",
+    "usageCount": 8
+  },
+  {
+    "itemId": 19942,
+    "name": "Durium Nugget",
+    "expansion": "SB",
+    "usageCount": 7
+  },
+  {
+    "itemId": 36248,
+    "name": "Luncheon Toad Leather",
+    "expansion": "EW",
+    "usageCount": 7
+  },
+  {
+    "itemId": 36212,
+    "name": "AR-Caean Velvet",
+    "expansion": "EW",
+    "usageCount": 6
+  },
+  {
+    "itemId": 36186,
+    "name": "Star Quartz",
+    "expansion": "EW",
+    "usageCount": 6
+  },
+  {
+    "itemId": 36182,
+    "name": "Ametrine",
+    "expansion": "EW",
+    "usageCount": 5
+  },
+  {
+    "itemId": 36170,
+    "name": "Bismuth Ingot",
+    "expansion": "EW",
+    "usageCount": 5
+  },
+  {
+    "itemId": 27706,
+    "name": "Deepgold Nugget",
+    "expansion": "ShB",
+    "usageCount": 5
+  },
+  {
+    "itemId": 27757,
+    "name": "Dwarven Cotton",
+    "expansion": "ShB",
+    "usageCount": 5
+  },
+  {
+    "itemId": 27715,
+    "name": "Dwarven Mythril Nugget",
+    "expansion": "ShB",
+    "usageCount": 5
+  },
+  {
+    "itemId": 36247,
+    "name": "Gaja Leather",
+    "expansion": "EW",
+    "usageCount": 5
+  },
+  {
+    "itemId": 44062,
+    "name": "Gargantua Leather",
+    "expansion": "DT",
+    "usageCount": 5
+  },
+  {
+    "itemId": 12521,
+    "name": "Hardsilver Ingot",
+    "expansion": "HW",
+    "usageCount": 5
+  },
+  {
+    "itemId": 12520,
+    "name": "Hardsilver Nugget",
+    "expansion": "SB",
+    "usageCount": 5
+  },
+  {
+    "itemId": 36250,
+    "name": "Kumbhira Leather",
+    "expansion": "EW",
+    "usageCount": 5
+  },
+  {
+    "itemId": 27710,
+    "name": "Manasilver Nugget",
+    "expansion": "ShB",
+    "usageCount": 5
+  },
+  {
+    "itemId": 44010,
+    "name": "Pink Beryl",
+    "expansion": "DT",
+    "usageCount": 5
+  },
+  {
+    "itemId": 12594,
+    "name": "Rainbow Thread",
+    "expansion": "HW",
+    "usageCount": 5
+  },
+  {
+    "itemId": 19978,
+    "name": "Ruby Cotton Yarn",
+    "expansion": "SB",
+    "usageCount": 5
+  },
+  {
+    "itemId": 27742,
+    "name": "Sea Swallow Leather",
+    "expansion": "ShB",
+    "usageCount": 5
+  },
+  {
+    "itemId": 19945,
+    "name": "Tama-hagane Ingot",
+    "expansion": "SB",
+    "usageCount": 5
+  },
+  {
+    "itemId": 44033,
+    "name": "Thunderyards Silk",
+    "expansion": "DT",
+    "usageCount": 5
+  },
+  {
+    "itemId": 36209,
+    "name": "Almasty Serge",
+    "expansion": "EW",
+    "usageCount": 4
+  },
+  {
+    "itemId": 36189,
+    "name": "Annite Whetstone",
+    "expansion": "EW",
+    "usageCount": 4
+  },
+  {
+    "itemId": 44060,
+    "name": "Br'aax Leather",
+    "expansion": "DT",
+    "usageCount": 4
+  },
+  {
+    "itemId": 5366,
+    "name": "Cedar Lumber",
+    "expansion": "HW",
+    "usageCount": 4
+  },
+  {
+    "itemId": 44023,
+    "name": "Claro Walnut Lumber",
+    "expansion": "DT",
+    "usageCount": 4
+  },
+  {
+    "itemId": 43999,
+    "name": "Cobalt Tungsten Ingot",
+    "expansion": "DT",
+    "usageCount": 4
+  },
+  {
+    "itemId": 12581,
+    "name": "Dark Chestnut Lumber",
+    "expansion": "HW",
+    "usageCount": 4
+  },
+  {
+    "itemId": 12564,
+    "name": "Dhalmel Leather",
+    "expansion": "HW",
+    "usageCount": 4
+  },
+  {
+    "itemId": 27714,
+    "name": "Dwarven Mythril Ingot",
+    "expansion": "ShB",
+    "usageCount": 4
+  },
+  {
+    "itemId": 5066,
+    "name": "Electrum Ingot",
+    "expansion": "HW",
+    "usageCount": 4
+  },
+  {
+    "itemId": 19877,
+    "name": "Gagana Egg",
+    "expansion": "SB",
+    "usageCount": 4
+  },
+  {
+    "itemId": 19993,
+    "name": "Gagana Leather",
+    "expansion": "SB",
+    "usageCount": 4
+  },
+  {
+    "itemId": 36168,
+    "name": "High Durium Nugget",
+    "expansion": "EW",
+    "usageCount": 4
+  },
+  {
+    "itemId": 19939,
+    "name": "High Steel Nugget",
+    "expansion": "SB",
+    "usageCount": 4
+  },
+  {
+    "itemId": 44009,
+    "name": "Ihuykanite",
+    "expansion": "DT",
+    "usageCount": 4
+  },
+  {
+    "itemId": 36200,
+    "name": "Integral Lumber",
+    "expansion": "EW",
+    "usageCount": 4
+  },
+  {
+    "itemId": 19938,
+    "name": "Koppranickel Nugget",
+    "expansion": "SB",
+    "usageCount": 4
+  },
+  {
+    "itemId": 27835,
+    "name": "Lemonette",
+    "expansion": "EW",
+    "usageCount": 4
+  },
+  {
+    "itemId": 27693,
+    "name": "Lignum Vitae Lumber",
+    "expansion": "ShB",
+    "usageCount": 4
+  },
+  {
+    "itemId": 44013,
+    "name": "Magnesia Whetstone",
+    "expansion": "DT",
+    "usageCount": 4
+  },
+  {
+    "itemId": 36171,
+    "name": "Manganese Ingot",
+    "expansion": "EW",
+    "usageCount": 4
+  },
+  {
+    "itemId": 19943,
+    "name": "Oroshigane Ingot",
+    "expansion": "SB",
+    "usageCount": 4
+  },
+  {
+    "itemId": 5068,
+    "name": "Rose Gold Nugget",
+    "expansion": "SB",
+    "usageCount": 4
+  },
+  {
+    "itemId": 44032,
+    "name": "Rroneek Serge",
+    "expansion": "DT",
+    "usageCount": 4
+  },
+  {
+    "itemId": 43998,
+    "name": "Ruthenium Ingot",
+    "expansion": "DT",
+    "usageCount": 4
+  },
+  {
+    "itemId": 12544,
+    "name": "Star Ruby",
+    "expansion": "ShB",
+    "usageCount": 4
+  },
+  {
+    "itemId": 27707,
+    "name": "Stonegold Nugget",
+    "expansion": "ShB",
+    "usageCount": 4
+  },
+  {
+    "itemId": 19995,
+    "name": "Tiger Leather",
+    "expansion": "SB",
+    "usageCount": 4
+  },
+  {
+    "itemId": 12524,
+    "name": "Titanium Nugget",
+    "expansion": "HW",
+    "usageCount": 4
+  },
+  {
+    "itemId": 27782,
+    "name": "Underground Spring Water",
+    "expansion": "ShB",
+    "usageCount": 4
+  },
+  {
+    "itemId": 27841,
+    "name": "Upland Wheat Flour",
+    "expansion": "EW",
+    "usageCount": 4
+  },
+  {
+    "itemId": 44011,
+    "name": "White Gold Ingot",
+    "expansion": "DT",
+    "usageCount": 4
+  },
+  {
+    "itemId": 27741,
+    "name": "Zonure Leather",
+    "expansion": "ShB",
+    "usageCount": 4
+  },
+  {
+    "itemId": 36263,
+    "name": "Ambrosial Water",
+    "expansion": "EW",
+    "usageCount": 3
+  },
+  {
+    "itemId": 12566,
+    "name": "Amphiptere Leather",
+    "expansion": "HW",
+    "usageCount": 3
+  },
+  {
+    "itemId": 27740,
+    "name": "Atrociraptor Leather",
+    "expansion": "ShB",
+    "usageCount": 3
+  },
+  {
+    "itemId": 19925,
+    "name": "Beech Lumber",
+    "expansion": "SB",
+    "usageCount": 3
+  },
+  {
+    "itemId": 27711,
+    "name": "Bluespirit Tile",
+    "expansion": "ShB",
+    "usageCount": 3
+  },
+  {
+    "itemId": 27745,
+    "name": "Bright Linen Cloth",
+    "expansion": "ShB",
+    "usageCount": 3
+  },
+  {
+    "itemId": 36208,
+    "name": "Dark Hempen Cloth",
+    "expansion": "EW",
+    "usageCount": 3
+  },
+  {
+    "itemId": 12565,
+    "name": "Dragon Leather",
+    "expansion": "HW",
+    "usageCount": 3
+  },
+  {
+    "itemId": 4829,
+    "name": "Garlean Garlic",
+    "expansion": "SB",
+    "usageCount": 3
+  },
+  {
+    "itemId": 19997,
+    "name": "Gazelle Leather",
+    "expansion": "SB",
+    "usageCount": 3
+  },
+  {
+    "itemId": 44061,
+    "name": "Gomphotherium Leather",
+    "expansion": "DT",
+    "usageCount": 3
+  },
+  {
+    "itemId": 27739,
+    "name": "Green Glider Leather",
+    "expansion": "ShB",
+    "usageCount": 3
+  },
+  {
+    "itemId": 19841,
+    "name": "Gyr Abanian Flour",
+    "expansion": "SB",
+    "usageCount": 3
+  },
+  {
+    "itemId": 44059,
+    "name": "Hammerhead Crocodile Leather",
+    "expansion": "DT",
+    "usageCount": 3
+  },
+  {
+    "itemId": 19941,
+    "name": "High Steel Ingot",
+    "expansion": "SB",
+    "usageCount": 3
+  },
+  {
+    "itemId": 27748,
+    "name": "Iridescent Silk",
+    "expansion": "ShB",
+    "usageCount": 3
+  },
+  {
+    "itemId": 36199,
+    "name": "Ironwood Lumber",
+    "expansion": "EW",
+    "usageCount": 3
+  },
+  {
+    "itemId": 19980,
+    "name": "Kudzu Cloth",
+    "expansion": "SB",
+    "usageCount": 3
+  },
+  {
+    "itemId": 44008,
+    "name": "Lar Ingot",
+    "expansion": "DT",
+    "usageCount": 3
+  },
+  {
+    "itemId": 19926,
+    "name": "Larch Lumber",
+    "expansion": "SB",
+    "usageCount": 3
+  },
+  {
+    "itemId": 43997,
+    "name": "Mountain Chromite Ingot",
+    "expansion": "DT",
+    "usageCount": 3
+  },
+  {
+    "itemId": 44030,
+    "name": "Mountain Linen",
+    "expansion": "DT",
+    "usageCount": 3
+  },
+  {
+    "itemId": 12528,
+    "name": "Mythrite Rivets",
+    "expansion": "HW",
+    "usageCount": 3
+  },
+  {
+    "itemId": 19927,
+    "name": "Persimmon Lumber",
+    "expansion": "SB",
+    "usageCount": 3
+  },
+  {
+    "itemId": 5372,
+    "name": "Pine Lumber",
+    "expansion": "SB",
+    "usageCount": 3
+  },
+  {
+    "itemId": 36198,
+    "name": "Red Pine Lumber",
+    "expansion": "EW",
+    "usageCount": 3
+  },
+  {
+    "itemId": 36249,
+    "name": "Saiga Leather",
+    "expansion": "EW",
+    "usageCount": 3
+  },
+  {
+    "itemId": 44031,
+    "name": "Sarcenet Cloth",
+    "expansion": "DT",
+    "usageCount": 3
+  },
+  {
+    "itemId": 44058,
+    "name": "Silver Lobo Leather",
+    "expansion": "DT",
+    "usageCount": 3
+  },
+  {
+    "itemId": 27738,
+    "name": "Smilodon Leather",
+    "expansion": "ShB",
+    "usageCount": 3
+  },
+  {
+    "itemId": 44029,
+    "name": "Snow Cotton Cloth",
+    "expansion": "DT",
+    "usageCount": 3
+  },
+  {
+    "itemId": 36210,
+    "name": "Snow Linen",
+    "expansion": "EW",
+    "usageCount": 3
+  },
+  {
+    "itemId": 19983,
+    "name": "Steppe Serge",
+    "expansion": "SB",
+    "usageCount": 3
+  },
+  {
+    "itemId": 27713,
+    "name": "Titanbronze Ingot",
+    "expansion": "ShB",
+    "usageCount": 3
+  },
+  {
+    "itemId": 44000,
+    "name": "Titanium Gold Nugget",
+    "expansion": "DT",
+    "usageCount": 3
+  },
+  {
+    "itemId": 12525,
+    "name": "Titanium Ingot",
+    "expansion": "HW",
+    "usageCount": 3
+  },
+  {
+    "itemId": 19988,
+    "name": "Twinthread",
+    "expansion": "ShB",
+    "usageCount": 3
+  },
+  {
+    "itemId": 7017,
+    "name": "Varnish",
+    "expansion": "SB",
+    "usageCount": 3
+  },
+  {
+    "itemId": 19928,
+    "name": "Zelkova Lumber",
+    "expansion": "SB",
+    "usageCount": 3
+  },
+  {
+    "itemId": 12526,
+    "name": "Adamantite Nugget",
+    "expansion": "HW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 44063,
+    "name": "Alpaca Fillet",
+    "expansion": "DT",
+    "usageCount": 2
+  },
+  {
+    "itemId": 12522,
+    "name": "Aurum Regis Nugget",
+    "expansion": "HW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 12583,
+    "name": "Birch Lumber",
+    "expansion": "HW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 19974,
+    "name": "Bloodhempen Cloth",
+    "expansion": "SB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 36185,
+    "name": "Blue Zircon",
+    "expansion": "EW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 44020,
+    "name": "Ceiba Lumber",
+    "expansion": "DT",
+    "usageCount": 2
+  },
+  {
+    "itemId": 12592,
+    "name": "Chimerical Felt",
+    "expansion": "HW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 43972,
+    "name": "Cooking Mezcal",
+    "expansion": "DT",
+    "usageCount": 2
+  },
+  {
+    "itemId": 12610,
+    "name": "Crystal Glass",
+    "expansion": "HW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 12878,
+    "name": "Cyclops Onion",
+    "expansion": "SB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 12893,
+    "name": "Dark Chestnut",
+    "expansion": "HW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 44021,
+    "name": "Dark Mahogany Lumber",
+    "expansion": "DT",
+    "usageCount": 2
+  },
+  {
+    "itemId": 36077,
+    "name": "Dark Rye Flour",
+    "expansion": "EW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 27708,
+    "name": "Deepgold Ingot",
+    "expansion": "ShB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 27781,
+    "name": "Enchanted Dimythrite Ink",
+    "expansion": "ShB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 36238,
+    "name": "Enchanted Manganese Ink",
+    "expansion": "EW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 12601,
+    "name": "Enchanted Mythrite Ink",
+    "expansion": "HW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 27766,
+    "name": "Enchanted Truegold Ink",
+    "expansion": "ShB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 27838,
+    "name": "Frantoio Oil",
+    "expansion": "ShB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 36089,
+    "name": "Giant Popoto",
+    "expansion": "EW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 44019,
+    "name": "Ginseng Lumber",
+    "expansion": "DT",
+    "usageCount": 2
+  },
+  {
+    "itemId": 27842,
+    "name": "Golden Honey",
+    "expansion": "EW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 19994,
+    "name": "Gyuki Leather",
+    "expansion": "SB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 12591,
+    "name": "Hallowed Ramie Cloth",
+    "expansion": "HW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 36169,
+    "name": "High Durium Ingot",
+    "expansion": "EW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 12881,
+    "name": "Highland Flour",
+    "expansion": "HW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 36196,
+    "name": "Horse Chestnut Lumber",
+    "expansion": "EW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 19940,
+    "name": "Koppranickel Ingot",
+    "expansion": "SB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 27785,
+    "name": "Light Gerbera",
+    "expansion": "EW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 19865,
+    "name": "Lotus Root",
+    "expansion": "SB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 19996,
+    "name": "Marid Leather",
+    "expansion": "SB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 19947,
+    "name": "Molybdenum Ingot",
+    "expansion": "SB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 12519,
+    "name": "Mythrite Ingot",
+    "expansion": "HW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 27754,
+    "name": "Ovim Wool",
+    "expansion": "ShB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 19946,
+    "name": "Palladium Nugget",
+    "expansion": "SB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 36197,
+    "name": "Palm Lumber",
+    "expansion": "EW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 36080,
+    "name": "Palm Sugar",
+    "expansion": "EW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 36079,
+    "name": "Perilla Oil",
+    "expansion": "EW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 36183,
+    "name": "Pewter Ingot",
+    "expansion": "EW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 36184,
+    "name": "Phrygian Gold Ingot",
+    "expansion": "EW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 27751,
+    "name": "Pixie Cotton",
+    "expansion": "ShB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 27752,
+    "name": "Pixie Floss",
+    "expansion": "ShB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 12588,
+    "name": "Rainbow Cloth",
+    "expansion": "HW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 12590,
+    "name": "Ramie Cloth",
+    "expansion": "HW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 12595,
+    "name": "Ramie Thread",
+    "expansion": "SB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 19977,
+    "name": "Ruby Cotton Cloth",
+    "expansion": "SB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 44051,
+    "name": "Sanctified Water",
+    "expansion": "DT",
+    "usageCount": 2
+  },
+  {
+    "itemId": 27692,
+    "name": "Sandteak Lumber",
+    "expansion": "ShB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 36211,
+    "name": "Scarlet Moko Cloth",
+    "expansion": "EW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 12894,
+    "name": "Sour Cream",
+    "expansion": "SB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 27775,
+    "name": "Starch Glue",
+    "expansion": "EW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 19878,
+    "name": "Steppe Milk",
+    "expansion": "ShB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 12542,
+    "name": "Tiger's Eye",
+    "expansion": "HW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 27712,
+    "name": "Titanbronze Nugget",
+    "expansion": "ShB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 44050,
+    "name": "Tungsten Ink",
+    "expansion": "DT",
+    "usageCount": 2
+  },
+  {
+    "itemId": 12908,
+    "name": "Vermicelli",
+    "expansion": "SB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 6152,
+    "name": "Volcanic Rock Salt",
+    "expansion": "HW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 27689,
+    "name": "White Oak Lumber",
+    "expansion": "ShB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 5360,
+    "name": "Wildfowl Feather",
+    "expansion": "SB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 12563,
+    "name": "Wyvern Leather",
+    "expansion": "HW",
+    "usageCount": 2
+  },
+  {
+    "itemId": 44034,
+    "name": "Yak T'el Spring Water",
+    "expansion": "DT",
+    "usageCount": 2
+  },
+  {
+    "itemId": 20187,
+    "name": "Yanxian Tiger Prawn",
+    "expansion": "SB",
+    "usageCount": 2
+  },
+  {
+    "itemId": 12901,
+    "name": "Abalathian Rock Salt",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12632,
+    "name": "Abalathian Spring Water",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 44022,
+    "name": "Acacia Lumber",
+    "expansion": "DT",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12543,
+    "name": "Agate",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 44072,
+    "name": "Alexandrian Axe Beak Wing",
+    "expansion": "DT",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19848,
+    "name": "Algae Salt",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 4842,
+    "name": "Almonds",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 27821,
+    "name": "Amber Cloves",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19965,
+    "name": "Azurite",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 5262,
+    "name": "Basilisk Whetstone",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19844,
+    "name": "Beet Sugar",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 43984,
+    "name": "Bell Pepper",
+    "expansion": "DT",
+    "usageCount": 1
+  },
+  {
+    "itemId": 36261,
+    "name": "Berkanan Sap",
+    "expansion": "EW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12586,
+    "name": "Birch Branch",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12892,
+    "name": "Birch Syrup",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 4830,
+    "name": "Black Pepper",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 27825,
+    "name": "Blood Tomato",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19975,
+    "name": "Bloodhempen Yarn",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 4753,
+    "name": "Buffalo Milk",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 36090,
+    "name": "Carrot of Happiness",
+    "expansion": "EW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 5403,
+    "name": "Cedar Branch",
+    "expansion": "ARR",
+    "usageCount": 1
+  },
+  {
+    "itemId": 5359,
+    "name": "Chocobo Feather",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 4828,
+    "name": "Cinnamon",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 27837,
+    "name": "Coffee Beans",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12638,
+    "name": "Coneflower",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19846,
+    "name": "Cottonseed Oil",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12639,
+    "name": "Cow Bitter",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12596,
+    "name": "Crawler Silk",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 4756,
+    "name": "Cream Cheese",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 27799,
+    "name": "Cubus Flesh",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19864,
+    "name": "Cumin Seeds",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12640,
+    "name": "Dandelion",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12628,
+    "name": "Deepeye Tears",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12874,
+    "name": "Dhalmel Meat",
+    "expansion": "ARR",
+    "usageCount": 1
+  },
+  {
+    "itemId": 20006,
+    "name": "Diatomite",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 4838,
+    "name": "Dragon Pepper",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19944,
+    "name": "Durium Ingot",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 27758,
+    "name": "Dwarven Cotton Thread",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19873,
+    "name": "Dzo Chuck",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 36256,
+    "name": "Egg of Elpis",
+    "expansion": "DT",
+    "usageCount": 1
+  },
+  {
+    "itemId": 36095,
+    "name": "Elder Nutmeg Seeds",
+    "expansion": "EW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12603,
+    "name": "Enchanted Aurum Regis Ink",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19902,
+    "name": "Enchanted Durium Ink",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12602,
+    "name": "Enchanted Hardsilver Ink",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 36237,
+    "name": "Enchanted High Durium Ink",
+    "expansion": "EW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19901,
+    "name": "Enchanted Koppranickel Ink",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 27772,
+    "name": "Enchanted Manasilver Ink",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19903,
+    "name": "Enchanted Palladium Ink",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12895,
+    "name": "Fermented Butter",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 4834,
+    "name": "Galago Mint",
+    "expansion": "DT",
+    "usageCount": 1
+  },
+  {
+    "itemId": 27839,
+    "name": "Garden Beet Sugar",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 36081,
+    "name": "Garlean Cheese",
+    "expansion": "DT",
+    "usageCount": 1
+  },
+  {
+    "itemId": 4863,
+    "name": "Gelatin",
+    "expansion": "EW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12795,
+    "name": "Gloaming Coral",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 36569,
+    "name": "Grey Mullet",
+    "expansion": "EW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 4806,
+    "name": "Gridanian Walnut",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12607,
+    "name": "Growth Formula Epsilon",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19904,
+    "name": "Growth Formula Eta",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 27765,
+    "name": "Growth Formula Iota",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12608,
+    "name": "Growth Formula Zeta",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19871,
+    "name": "Gyr Abanian Mineral Water",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12582,
+    "name": "Hallowed Chestnut Lumber",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 27802,
+    "name": "Hard Mudstone Whetstone",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12971,
+    "name": "Highland Oregano",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 27968,
+    "name": "Highland Spring Water",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 5288,
+    "name": "Hippogryph Leather",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12890,
+    "name": "Hollandaise Sauce",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19917,
+    "name": "Holy Basil",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12580,
+    "name": "Holy Cedar Lumber",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12589,
+    "name": "Holy Rainbow Cloth",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 4850,
+    "name": "Honey",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 27763,
+    "name": "Hoptrap Leaf",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 36088,
+    "name": "Iceberg Lettuce",
+    "expansion": "EW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 27749,
+    "name": "Iridescent Silk Thread",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12850,
+    "name": "Ishgardian Muffin",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 5196,
+    "name": "Jadeite",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19849,
+    "name": "Koshu Sticky Rice",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 44040,
+    "name": "Kozama'uka Chamomile",
+    "expansion": "DT",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19853,
+    "name": "Kudzu Root",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19981,
+    "name": "Kudzu Thread",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19963,
+    "name": "Kyanite",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12541,
+    "name": "Larimar",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 44069,
+    "name": "Lesser Apollyon Shell",
+    "expansion": "DT",
+    "usageCount": 1
+  },
+  {
+    "itemId": 27851,
+    "name": "Lorikeet Egg",
+    "expansion": "EW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 36258,
+    "name": "Lunatender Blossom",
+    "expansion": "EW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 36165,
+    "name": "Manganese Ore",
+    "expansion": "EW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 27690,
+    "name": "Miracle Apple Lumber",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12883,
+    "name": "Mist Dill",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 27828,
+    "name": "Mist Spinach",
+    "expansion": "EW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 36239,
+    "name": "Moon Gel",
+    "expansion": "DT",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12549,
+    "name": "Mormorion",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 43977,
+    "name": "Mountain Salt",
+    "expansion": "DT",
+    "usageCount": 1
+  },
+  {
+    "itemId": 36257,
+    "name": "Mousse Flesh",
+    "expansion": "EW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19913,
+    "name": "Nagxian Cudweed",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 27827,
+    "name": "Night Pepper",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 36386,
+    "name": "Northern Herring",
+    "expansion": "EW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 4844,
+    "name": "Nutmeg",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12872,
+    "name": "Okeanis Egg",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 4857,
+    "name": "Olive Oil",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12546,
+    "name": "Opal",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 36255,
+    "name": "Ovibos Milk",
+    "expansion": "EW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 4785,
+    "name": "Paprika",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 44043,
+    "name": "Pearl Grass",
+    "expansion": "DT",
+    "usageCount": 1
+  },
+  {
+    "itemId": 20010,
+    "name": "Perlite",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19869,
+    "name": "Persimmon",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19909,
+    "name": "Persimmon Tannin",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 36260,
+    "name": "Petalouda Scales",
+    "expansion": "EW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 4787,
+    "name": "Popoto",
+    "expansion": "ARR",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12899,
+    "name": "Porcini",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 27818,
+    "name": "Purple Carrot",
+    "expansion": "EW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 27850,
+    "name": "Rail Tenderloin",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19967,
+    "name": "Rhodonite",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19843,
+    "name": "Rice Vinegar",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 43974,
+    "name": "Royal Maple Syrup",
+    "expansion": "DT",
+    "usageCount": 1
+  },
+  {
+    "itemId": 44106,
+    "name": "Rroneek Chuck",
+    "expansion": "DT",
+    "usageCount": 1
+  },
+  {
+    "itemId": 27822,
+    "name": "Russet Popoto",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 4845,
+    "name": "Sagolii Sage",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12737,
+    "name": "Seema Patrician",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 43753,
+    "name": "Shaaloani Salmon",
+    "expansion": "DT",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19863,
+    "name": "Shiitake Mushroom",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 5338,
+    "name": "Silk Thread",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 20008,
+    "name": "Slate Whetstone",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 4862,
+    "name": "Sour Red",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 36523,
+    "name": "Spiny King Crab",
+    "expansion": "EW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 27840,
+    "name": "Squid Ink",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12545,
+    "name": "Star Sapphire",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 27709,
+    "name": "Stonegold Ingot",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 5342,
+    "name": "Straw",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 4852,
+    "name": "Sweet Cream",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 20179,
+    "name": "Swordtip",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 36096,
+    "name": "Sykon",
+    "expansion": "EW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12529,
+    "name": "Titanium Rivets",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 27804,
+    "name": "Tuff Whetstone",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 44071,
+    "name": "Tumbleclaw Weeds",
+    "expansion": "DT",
+    "usageCount": 1
+  },
+  {
+    "itemId": 43976,
+    "name": "Turali Corn Oil",
+    "expansion": "DT",
+    "usageCount": 1
+  },
+  {
+    "itemId": 43988,
+    "name": "Turali Pineapple",
+    "expansion": "DT",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19987,
+    "name": "Twinsilk",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 43973,
+    "name": "Ut'ohmu Chili Sauce",
+    "expansion": "DT",
+    "usageCount": 1
+  },
+  {
+    "itemId": 5506,
+    "name": "Void Glue",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 43975,
+    "name": "Whipped Cream",
+    "expansion": "DT",
+    "usageCount": 1
+  },
+  {
+    "itemId": 27691,
+    "name": "White Ash Lumber",
+    "expansion": "ShB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 43986,
+    "name": "White Pepper",
+    "expansion": "DT",
+    "usageCount": 1
+  },
+  {
+    "itemId": 43990,
+    "name": "Wild Ja Tiika Bananas",
+    "expansion": "DT",
+    "usageCount": 1
+  },
+  {
+    "itemId": 44041,
+    "name": "Windsbalm Bay Leaf",
+    "expansion": "DT",
+    "usageCount": 1
+  },
+  {
+    "itemId": 19916,
+    "name": "Windtea Leaves",
+    "expansion": "SB",
+    "usageCount": 1
+  },
+  {
+    "itemId": 5507,
+    "name": "Wing Glue",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 12575,
+    "name": "Yeti Fang",
+    "expansion": "HW",
+    "usageCount": 1
+  },
+  {
+    "itemId": 43985,
+    "name": "Yyasulani Garlic",
+    "expansion": "DT",
+    "usageCount": 1
+  }
+]

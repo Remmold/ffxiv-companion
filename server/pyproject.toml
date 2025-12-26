@@ -1,0 +1,18 @@
+[project]
+name = "gathering-gold-server"
+version = "1.0.0"
+description = "Backend server for Gathering Gold - FFXIV Timed Node Tracker"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+    "httpx>=0.28.0",
+    "cachetools>=5.5.0",
+]
+
+[project.scripts]
+serve = "app.main:start"
+
+[tool.uv]
+dev-dependencies = []
