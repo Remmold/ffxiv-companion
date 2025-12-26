@@ -270,6 +270,10 @@ async def get_bulk_material_profit(
         name = item.get("name", "")
         item_category = get_material_category(name)
         
+        # Skip items that aren't in any material category (armor, weapons, etc.)
+        if item_category == "Other":
+            continue
+        
         # Skip if category doesn't match
         if category != "All" and item_category != category:
             continue
