@@ -9,8 +9,6 @@ import { expansions, dataCenters, dcByRegion, regionOrder } from '../data/ffxivD
 const navItems = [
     { path: '/', label: 'Gathering', icon: '⛏️' },
     { path: '/crafting', label: 'Crafting', icon: '🔨' },
-    { path: '/collectables', label: 'Collectables', icon: '📦' },
-    { path: '/materials', label: 'Materials', icon: '🧱' },
     { path: '/deals', label: 'Deals', icon: '💰' },
     { path: '/gear', label: 'Gear', icon: '⚙️' },
     { path: '/checklist', label: 'Checklist', icon: '📋' },
@@ -37,14 +35,14 @@ export default function Layout({ children }) {
                             <EorzeanClock compact />
                         </div>
 
-                        {/* Nav Links */}
-                        <div className="flex items-center gap-1">
+                        {/* Nav Links - Fill remaining space equally */}
+                        <div className="flex-1 flex items-center gap-1 ml-4">
                             {navItems.map(item => (
                                 <NavLink
                                     key={item.path}
                                     to={item.path}
                                     className={({ isActive }) =>
-                                        `flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${isActive
+                                        `flex-1 flex items-center justify-center gap-2 px-2 py-2 rounded-lg text-sm font-medium transition-colors ${isActive
                                             ? 'bg-gold/20 text-gold border border-gold/30'
                                             : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/50'
                                         }`

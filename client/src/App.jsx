@@ -3,8 +3,6 @@ import { FilterProvider } from './context/FilterContext';
 import Layout from './components/Layout';
 import GatheringPage from './pages/GatheringPage';
 import CraftingPage from './pages/CraftingPage';
-import CollectablesPage from './pages/CollectablesPage';
-import MaterialBrowserPage from './pages/MaterialBrowserPage';
 import MarketDealsPage from './pages/MarketDealsPage';
 import GearGuidePage from './pages/GearGuidePage';
 import ChecklistPage from './pages/ChecklistPage';
@@ -25,8 +23,6 @@ export default function App() {
                             <Routes>
                                 <Route path="/" element={<GatheringPage />} />
                                 <Route path="/crafting" element={<CraftingPage />} />
-                                <Route path="/collectables" element={<CollectablesPage />} />
-                                <Route path="/materials" element={<MaterialBrowserPage />} />
                                 <Route path="/deals" element={<MarketDealsPage />} />
                                 <Route path="/gear" element={<GearGuidePage />} />
                                 <Route path="/checklist" element={<ChecklistPage />} />
