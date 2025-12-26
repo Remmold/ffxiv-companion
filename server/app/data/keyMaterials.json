@@ -1,0 +1,307 @@
+[
+    {
+        "itemId": 5057,
+        "name": "Darksteel Ingot",
+        "vendorPrice": null,
+        "category": "Ingot",
+        "usedIn": [
+            "Master Recipes",
+            "Relic Weapons"
+        ]
+    },
+    {
+        "itemId": 5058,
+        "name": "Darksteel Nugget",
+        "vendorPrice": null,
+        "category": "Ingot",
+        "usedIn": [
+            "Darksteel Ingot"
+        ]
+    },
+    {
+        "itemId": 5111,
+        "name": "Coke",
+        "vendorPrice": 16,
+        "vendorLocation": "Housing Vendor",
+        "category": "Reagent",
+        "usedIn": [
+            "Steel Ingot",
+            "Darksteel Ingot"
+        ]
+    },
+    {
+        "itemId": 5530,
+        "name": "Scheelite",
+        "vendorPrice": null,
+        "category": "Stone",
+        "usedIn": [
+            "Hardened Sap",
+            "Master Recipes"
+        ]
+    },
+    {
+        "itemId": 7598,
+        "name": "Hardened Sap",
+        "vendorPrice": null,
+        "category": "Reagent",
+        "usedIn": [
+            "Varnish",
+            "Master Recipes"
+        ]
+    },
+    {
+        "itemId": 5504,
+        "name": "Animal Fat",
+        "vendorPrice": 7,
+        "vendorLocation": "Material Supplier",
+        "category": "Reagent",
+        "usedIn": [
+            "Beeswax",
+            "Various Recipes"
+        ]
+    },
+    {
+        "itemId": 5530,
+        "name": "Natron",
+        "vendorPrice": 7,
+        "vendorLocation": "Material Supplier",
+        "category": "Reagent",
+        "usedIn": [
+            "Leather Processing",
+            "Alchemy"
+        ]
+    },
+    {
+        "itemId": 5518,
+        "name": "Alumen",
+        "vendorPrice": 7,
+        "vendorLocation": "Material Supplier",
+        "category": "Reagent",
+        "usedIn": [
+            "Leather Processing"
+        ]
+    },
+    {
+        "itemId": 5519,
+        "name": "Black Alumen",
+        "vendorPrice": null,
+        "category": "Reagent",
+        "usedIn": [
+            "High-level Leather"
+        ]
+    },
+    {
+        "itemId": 5336,
+        "name": "Raziqsand",
+        "vendorPrice": null,
+        "category": "Sand",
+        "usedIn": [
+            "Glass",
+            "Alchemy"
+        ]
+    },
+    {
+        "itemId": 7757,
+        "name": "Fermented Juice",
+        "vendorPrice": null,
+        "category": "Reagent",
+        "usedIn": [
+            "Dyes",
+            "Alchemy"
+        ]
+    },
+    {
+        "itemId": 5116,
+        "name": "Growth Formula Gamma",
+        "vendorPrice": 28,
+        "vendorLocation": "Material Supplier",
+        "category": "Reagent",
+        "usedIn": [
+            "Gardening",
+            "Alchemy"
+        ]
+    },
+    {
+        "itemId": 12534,
+        "name": "Adamantite Ingot",
+        "vendorPrice": null,
+        "category": "Ingot",
+        "usedIn": [
+            "HW Master Recipes"
+        ]
+    },
+    {
+        "itemId": 12519,
+        "name": "Mythrite Ingot",
+        "vendorPrice": null,
+        "category": "Ingot",
+        "usedIn": [
+            "HW Recipes"
+        ]
+    },
+    {
+        "itemId": 19940,
+        "name": "High Steel Ingot",
+        "vendorPrice": null,
+        "category": "Ingot",
+        "usedIn": [
+            "SB Master Recipes"
+        ]
+    },
+    {
+        "itemId": 27716,
+        "name": "Titanbronze Ingot",
+        "vendorPrice": null,
+        "category": "Ingot",
+        "usedIn": [
+            "ShB Master Recipes"
+        ]
+    },
+    {
+        "itemId": 36173,
+        "name": "Chondrite Ingot",
+        "vendorPrice": null,
+        "category": "Ingot",
+        "usedIn": [
+            "EW Master Recipes"
+        ]
+    },
+    {
+        "itemId": 44001,
+        "name": "Ra'Kaznar Ingot",
+        "vendorPrice": null,
+        "category": "Ingot",
+        "usedIn": [
+            "DT Master Recipes"
+        ]
+    },
+    {
+        "itemId": 5355,
+        "name": "Rosewood Lumber",
+        "vendorPrice": null,
+        "category": "Lumber",
+        "usedIn": [
+            "Furniture",
+            "Master Recipes"
+        ]
+    },
+    {
+        "itemId": 5352,
+        "name": "Oak Lumber",
+        "vendorPrice": null,
+        "category": "Lumber",
+        "usedIn": [
+            "Furniture",
+            "Weapons"
+        ]
+    },
+    {
+        "itemId": 5325,
+        "name": "Aldgoat Leather",
+        "vendorPrice": null,
+        "category": "Leather",
+        "usedIn": [
+            "ARR Armor",
+            "Gloves"
+        ]
+    },
+    {
+        "itemId": 7286,
+        "name": "Hippogryph Leather",
+        "vendorPrice": null,
+        "category": "Leather",
+        "usedIn": [
+            "ARR Master Recipes"
+        ]
+    },
+    {
+        "itemId": 5350,
+        "name": "Mortar",
+        "vendorPrice": 4,
+        "vendorLocation": "Material Supplier",
+        "category": "Reagent",
+        "usedIn": [
+            "Housing Items",
+            "Furniture"
+        ]
+    },
+    {
+        "itemId": 5530,
+        "name": "Glass Lens",
+        "vendorPrice": null,
+        "category": "Part",
+        "usedIn": [
+            "Accessories",
+            "Tools"
+        ]
+    },
+    {
+        "itemId": 5114,
+        "name": "Clear Demimateria",
+        "vendorPrice": null,
+        "category": "Reagent",
+        "usedIn": [
+            "Master Recipes",
+            "Orchestrion Rolls"
+        ]
+    },
+    {
+        "itemId": 8157,
+        "name": "Fieldcraft Demimateria III",
+        "vendorPrice": null,
+        "category": "Reagent",
+        "usedIn": [
+            "Master Recipes",
+            "Glamour"
+        ]
+    },
+    {
+        "itemId": 8155,
+        "name": "Battlecraft Demimateria III",
+        "vendorPrice": null,
+        "category": "Reagent",
+        "usedIn": [
+            "Master Recipes",
+            "Glamour"
+        ]
+    },
+    {
+        "itemId": 5530,
+        "name": "Master's Manaflare",
+        "vendorPrice": null,
+        "category": "Reagent",
+        "usedIn": [
+            "Master Recipes (ilvl 580+)"
+        ]
+    },
+    {
+        "itemId": 10335,
+        "name": "Grade 3 Thanalan Topsoil",
+        "vendorPrice": null,
+        "category": "Reagent",
+        "usedIn": [
+            "Gardening",
+            "Crossbreeding"
+        ]
+    },
+    {
+        "itemId": 10336,
+        "name": "Grade 3 Shroud Topsoil",
+        "vendorPrice": null,
+        "category": "Reagent",
+        "usedIn": [
+            "Gardening",
+            "Crossbreeding"
+        ]
+    },
+    {
+        "itemId": 10337,
+        "name": "Grade 3 La Noscean Topsoil",
+        "vendorPrice": null,
+        "category": "Reagent",
+        "usedIn": [
+            "Gardening",
+            "Crossbreeding"
+        ]
+    }
+]

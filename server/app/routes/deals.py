@@ -22,6 +22,14 @@ try:
 except FileNotFoundError:
     MATERIALS = []
 
+# Load key materials for vendor comparison
+KEY_MATERIALS_PATH = Path(__file__).parent.parent / "data" / "keyMaterials.json"
+try:
+    with open(KEY_MATERIALS_PATH, "r", encoding="utf-8") as f:
+        KEY_MATERIALS = json.load(f)
+except FileNotFoundError:
+    KEY_MATERIALS = []
+
 # Data centers
 DATA_CENTERS = {
     "Aether": ["Adamantoise", "Cactuar", "Faerie", "Gilgamesh", "Jenova", "Midgardsormr", "Sargatanas", "Siren"],
@@ -187,3 +195,148 @@ async def fetch_dc_prices(dc: str, item_ids: list[int]) -> dict:
         return data["items"]
     
     return {}
+
+
+@router.get("/deals/key-materials/{world}")
+async def get_key_material_deals(
+    world: str,
+    category: str = Query(default="All"),
+):
+    """
+    Get deals for key crafting materials.
+    Compares market prices to vendor prices and shows cheap buys.
+    """
+    if not KEY_MATERIALS:
+        return {
+            "world": world,
+            "count": 0,
+            "materials": []
+        }
+    
+    # Filter by category if specified
+    materials = KEY_MATERIALS
+    if category != "All":
+        materials = [m for m in materials if m.get("category") == category]
+    
+    # Get item IDs to fetch prices for
+    item_ids = [m["itemId"] for m in materials]
+    
+    # Fetch prices from Universalis
+    await universalis_limiter.acquire()
+    
+    batch_ids = ",".join(str(id) for id in item_ids)
+    
+    try:
+        async with httpx.AsyncClient() as client:
+            response = await client.get(
+                f"{UNIVERSALIS_BASE}/{world}/{batch_ids}",
+                params={"listings": 10, "entries": 5},
+                headers={"User-Agent": "GatheringGold/1.0"},
+                timeout=30.0
+            )
+            response.raise_for_status()
+            data = response.json()
+    except Exception as e:
+        print(f"Key materials price fetch error: {e}")
+        return {
+            "world": world,
+            "count": 0,
+            "materials": [],
+            "error": str(e)
+        }
+    
+    # Parse prices
+    prices = {}
+    if "itemID" in data:
+        prices[str(data["itemID"])] = data
+    elif "items" in data:
+        prices = data["items"]
+    
+    # Build results
+    results = []
+    for mat in materials:
+        item_id = str(mat["itemId"])
+        price_data = prices.get(item_id, {})
+        
+        min_price_nq = price_data.get("minPriceNQ", 0)
+        min_price_hq = price_data.get("minPriceHQ", 0)
+        avg_price = price_data.get("averagePrice", 0)
+        avg_price_nq = price_data.get("averagePriceNQ", 0)
+        avg_price_hq = price_data.get("averagePriceHQ", 0)
+        listings = price_data.get("listingsCount", 0)
+        velocity = price_data.get("regularSaleVelocity", 0)
+        
+        # Use the cheaper of NQ/HQ for min price
+        min_price = min_price_nq if min_price_nq > 0 else min_price_hq
+        if min_price_hq > 0 and min_price_hq < min_price:
+            min_price = min_price_hq
+        
+        # Calculate vs vendor price
+        vendor_price = mat.get("vendorPrice")
+        vs_vendor = None
+        is_vendor_deal = False
+        
+        if vendor_price and min_price > 0:
+            vs_vendor = round(((vendor_price - min_price) / vendor_price) * 100, 1)
+            # If market price is close to or below vendor, it's a good deal
+            is_vendor_deal = min_price <= vendor_price * 1.2
+        
+        # Calculate vs average
+        discount_pct = 0
+        if avg_price > 0 and min_price > 0:
+            discount_pct = round(((avg_price - min_price) / avg_price) * 100, 1)
+        
+        # Determine deal type
+        deal_type = None
+        if discount_pct >= 30:
+            deal_type = "crash"
+        elif discount_pct >= 15:
+            deal_type = "cheap"
+        elif is_vendor_deal:
+            deal_type = "vendor_deal"
+        
+        results.append({
+            "itemId": mat["itemId"],
+            "name": mat["name"],
+            "category": mat.get("category", "Unknown"),
+            "usedIn": mat.get("usedIn", []),
+            "vendorPrice": vendor_price,
+            "vendorLocation": mat.get("vendorLocation"),
+            "minPriceNQ": min_price_nq,
+            "minPriceHQ": min_price_hq,
+            "avgPrice": round(avg_price),
+            "avgPriceNQ": round(avg_price_nq),
+            "avgPriceHQ": round(avg_price_hq),
+            "listings": listings,
+            "velocity": round(velocity, 1),
+            "discountPct": discount_pct,
+            "vsVendor": vs_vendor,
+            "isVendorDeal": is_vendor_deal,
+            "dealType": deal_type
+        })
+    
+    # Sort by deal quality (crashes first, then cheap, then vendor deals)
+    def deal_sort_key(x):
+        if x["dealType"] == "crash":
+            return (0, -x["discountPct"])
+        elif x["dealType"] == "cheap":
+            return (1, -x["discountPct"])
+        elif x["dealType"] == "vendor_deal":
+            return (2, x["vsVendor"] or 0)
+        return (3, 0)
+    
+    results.sort(key=deal_sort_key)
+    
+    return {
+        "world": world,
+        "count": len(results),
+        "fetchedAt": int(time() * 1000),
+        "materials": results
+    }
+
+
+@router.get("/deals/key-materials/categories")
+async def get_key_material_categories():
+    """Get available categories for key materials."""
+    categories = list(set(m.get("category", "Unknown") for m in KEY_MATERIALS))
+    return {"categories": sorted(categories)}
