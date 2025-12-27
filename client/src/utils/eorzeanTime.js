@@ -37,17 +37,7 @@ export function formatET(hours, minutes = 0) {
     return `${displayHour}:${minutes.toString().padStart(2, '0')} ${period}`;
 }
 
-/**
- * Format ET time for display (12-hour AM/PM format, like in-game)
- * @param {number} hours
- * @param {number} minutes
- * @returns {string}
- */
-export function formatET12h(hours, minutes = 0) {
-    const period = hours >= 12 ? 'PM' : 'AM';
-    const displayHour = hours === 0 ? 12 : hours > 12 ? hours - 12 : hours;
-    return `${displayHour}:${minutes.toString().padStart(2, '0')} ${period}`;
-}
+
 
 /**
  * Convert ET minutes to real-world time

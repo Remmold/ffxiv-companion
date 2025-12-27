@@ -99,16 +99,21 @@ ffxiv-gatherbuddy/
 ├── client/                  # React frontend
 │   ├── src/
 │   │   ├── components/      # UI Components (Clock, NodeTable, Filters)
-│   │   ├── pages/           # Page Layouts (NodesPage, FishingPage)
+│   │   ├── pages/           # Page Layouts (GatheringPage, CraftingPage)
 │   │   ├── data/            # Static Data (Scrips, Guides)
 │   │   └── utils/           # Helpers (Time, Notifications)
 │   └── public/              # Sounds, Icons
 ├── server/                  # FastAPI backend
 │   ├── app/
-│   │   ├── routes/          # endpoints
-│   │   └── utils/           # backend logic
-│   ├── src/data/            # gatheringNodes.json (Truth Source)
-│   └── fetch_teamcraft_nodes.py # Data Update Script
+│   │   ├── routes/          # API endpoints (nodes, prices, deals, etc.)
+│   │   ├── data/            # JSON data files
+│   │   └── utils/           # Backend logic (eorzean_time, cache)
+│   └── fetch_teamcraft_nodes.py  # Data Update Script
+├── overlay-app/             # Electron always-on-top overlay
+│   ├── main.js              # Electron main process
+│   └── package.json         # Electron dependencies
+├── LEARNING.md              # Project explainer for newcomers
+├── HANDOVER.md              # Maintenance documentation
 ├── Dockerfile
 └── docker-compose.yml
 ```

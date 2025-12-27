@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { getAlarms, toggleAlarm, playAlarmSound } from '../utils/alarms';
+import { worlds } from '../data/ffxivData';
 
 // Calculate current Eorzean time
 function getEorzeanTime() {
@@ -44,11 +45,12 @@ function CountdownRing({ progress, size = 40 }) {
 
 const CLASS_ICONS = { Miner: '⛏️', Botanist: '🌿', Fisher: '🎣' };
 const MIN_GIL_OPTIONS = [0, 500, 1000, 2000, 5000, 10000];
+const EXPANSION_OPTIONS = ['All', 'DT', 'EW', 'ShB', 'SB', 'HW', 'ARR'];
 
 export default function OverlayPage() {
-    // Read filters from localStorage (same keys as FilterContext)
-    const [world] = useState(() => localStorage.getItem('selectedWorld') || 'Ragnarok');
-    const [expansion] = useState(() => localStorage.getItem('selectedExpansion') || 'All');
+    // Read filters from localStorage
+    const [world, setWorld] = useState(() => localStorage.getItem('overlay-world') || localStorage.getItem('selectedWorld') || 'Ragnarok');
+    const [expansion, setExpansion] = useState(() => localStorage.getItem('overlay-expansion') || 'All');
     const [nodes, setNodes] = useState([]);
     const [prices, setPrices] = useState({});
     const [countdown, setCountdown] = useState({ etMinutes: 120, realMinutes: 6 });
@@ -73,7 +75,7 @@ export default function OverlayPage() {
     // Upcoming: nodes spawning in the NEXT spawn window (within 2 ET hours = 120 ET minutes)
     // API returns minutesUntilSpawn in Eorzean Time minutes, not real minutes
     const upcomingThreshold = 120; // 2 ET hours = ~7 real minutes
-    const upcoming = nodesWithData.filter(n => !n.isActive && n.price > 0 && n.minutesUntilSpawn <= upcomingThreshold).sort((a, b) => b.price - a.price).slice(0, 2);
+    const upcoming = nodesWithData.filter(n => !n.isActive && n.price > 0 && n.minutesUntilSpawn <= upcomingThreshold).sort((a, b) => b.price - a.price).slice(0, 1);
 
     // Check if any active/upcoming node meets min gil threshold
     const hasValuableNode = [...active, ...upcoming].some(n => n.price >= minGilThreshold);
@@ -157,9 +159,18 @@ export default function OverlayPage() {
     const progress = countdown.etMinutes / 120;
 
     return (
-        <div className="min-h-screen bg-gray-900 text-white p-2" style={{ minWidth: '280px', maxWidth: '320px' }}>
+        <div className="bg-gray-900 text-white p-1.5" style={{ minWidth: '260px', maxWidth: '300px' }}>
+            {/* Draggable Title Bar (for Electron frameless window) */}
+            <div
+                className="flex items-center justify-between mb-1 py-1 cursor-move select-none"
+                style={{ WebkitAppRegion: 'drag' }}
+            >
+                <span className="text-xs font-semibold text-gold">🌟 Gathering Gold</span>
+                <span className="text-xs text-gray-500">{world}</span>
+            </div>
+
             {/* Header */}
-            <div className="flex items-center justify-between mb-2 pb-2 border-b border-gray-700">
+            <div className="flex items-center justify-between mb-1 pb-1 border-b border-gray-700" style={{ WebkitAppRegion: 'no-drag' }}>
                 <div className="flex items-center gap-2">
                     <div className="relative">
                         <CountdownRing progress={progress} size={36} />
@@ -188,14 +199,34 @@ export default function OverlayPage() {
 
             {/* Settings Panel */}
             {showSettings && (
-                <div className="mb-2 p-2 bg-gray-800 rounded border border-gray-700">
+                <div className="mb-1.5 p-1.5 bg-gray-800 rounded border border-gray-700">
+                    <div className="text-xs text-gray-400 mb-1">Server:</div>
+                    <select
+                        value={world}
+                        onChange={(e) => { setWorld(e.target.value); localStorage.setItem('overlay-world', e.target.value); }}
+                        className="w-full mb-2 text-xs px-1.5 py-1 rounded bg-gray-700 border border-gray-600 text-white"
+                    >
+                        {worlds.map(w => <option key={w} value={w}>{w}</option>)}
+                    </select>
+                    <div className="text-xs text-gray-400 mb-1">Expansion:</div>
+                    <div className="flex flex-wrap gap-1 mb-2">
+                        {EXPANSION_OPTIONS.map(exp => (
+                            <button
+                                key={exp}
+                                onClick={() => { setExpansion(exp); localStorage.setItem('overlay-expansion', exp); }}
+                                className={`text-xs px-1.5 py-0.5 rounded ${expansion === exp ? 'bg-gold text-black font-semibold' : 'bg-gray-700 hover:bg-gray-600'}`}
+                            >
+                                {exp}
+                            </button>
+                        ))}
+                    </div>
                     <div className="text-xs text-gray-400 mb-1">Min gil for alarm:</div>
                     <div className="flex flex-wrap gap-1">
                         {MIN_GIL_OPTIONS.map(val => (
                             <button
                                 key={val}
                                 onClick={() => handleMinGilChange(val)}
-                                className={`text-xs px-2 py-0.5 rounded ${minGilThreshold === val ? 'bg-yellow-500 text-black' : 'bg-gray-700 hover:bg-gray-600'}`}
+                                className={`text-xs px-1.5 py-0.5 rounded ${minGilThreshold === val ? 'bg-yellow-500 text-black' : 'bg-gray-700 hover:bg-gray-600'}`}
                             >
                                 {val === 0 ? 'Any' : formatGil(val)}
                             </button>
@@ -205,7 +236,7 @@ export default function OverlayPage() {
             )}
 
             {/* Active Nodes */}
-            <div className="mb-2">
+            <div className="mb-1">
                 <h3 className="text-xs font-semibold text-green-400 uppercase mb-1 flex items-center gap-1">
                     <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>
                     Active
@@ -213,10 +244,10 @@ export default function OverlayPage() {
                 {active.length === 0 ? (
                     <div className="text-xs text-gray-500">None active</div>
                 ) : (
-                    <div className="space-y-2">
+                    <div className="space-y-1">
                         {active.map(node => (
                             <div key={`${node.itemId}-${node.etSpawnStart}`}
-                                className="bg-green-900/20 border border-green-800/30 rounded p-2 cursor-pointer"
+                                className="bg-green-900/20 border border-green-800/30 rounded p-1.5 cursor-pointer"
                                 onClick={() => handleTeleport(node.nearestAetheryte)}
                             >
                                 <div className="flex items-center gap-2">
@@ -246,10 +277,10 @@ export default function OverlayPage() {
                 {upcoming.length === 0 ? (
                     <div className="text-xs text-gray-500">None upcoming</div>
                 ) : (
-                    <div className="space-y-2">
+                    <div className="space-y-1">
                         {upcoming.map(node => (
                             <div key={`${node.itemId}-${node.etSpawnStart}`}
-                                className="bg-yellow-900/10 border border-yellow-800/20 rounded p-2 cursor-pointer"
+                                className="bg-yellow-900/10 border border-yellow-800/20 rounded p-1.5 cursor-pointer"
                                 onClick={() => handleTeleport(node.nearestAetheryte)}
                             >
                                 <div className="flex items-center gap-2">
@@ -271,7 +302,7 @@ export default function OverlayPage() {
                 )}
             </div>
 
-            <div className="mt-2 text-center text-xs text-gray-600">Click node to copy teleport</div>
+            <div className="mt-1 text-center text-xs text-gray-600">Click to copy teleport</div>
         </div>
     );
 }

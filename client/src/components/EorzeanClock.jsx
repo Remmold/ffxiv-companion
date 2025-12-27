@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getCurrentEorzeanTime, formatET12h } from '../utils/eorzeanTime';
+import { getCurrentEorzeanTime, formatET } from '../utils/eorzeanTime';
 
 export default function EorzeanClock({ compact }) {
     const [time, setTime] = useState(getCurrentEorzeanTime());
@@ -16,7 +16,7 @@ export default function EorzeanClock({ compact }) {
     const isDaytime = time.hours >= 6 && time.hours < 18;
 
     // Format for main display (without seconds)
-    const mainTime = formatET12h(time.hours, time.minutes);
+    const mainTime = formatET(time.hours, time.minutes);
 
     if (compact) {
         return (

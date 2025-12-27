@@ -1,0 +1,30 @@
+{
+    "name": "gathering-gold-overlay",
+    "version": "1.0.0",
+    "description": "Always-on-top overlay for FFXIV Gathering Gold",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "dev": "electron . --dev",
+        "build": "electron-builder"
+    },
+    "author": "",
+    "license": "MIT",
+    "devDependencies": {
+        "electron": "^28.0.0",
+        "electron-builder": "^24.9.1"
+    },
+    "build": {
+        "appId": "com.gatheringgold.overlay",
+        "productName": "Gathering Gold Overlay",
+        "win": {
+            "target": "portable",
+            "icon": "icon.ico"
+        },
+        "files": [
+            "main.js",
+            "preload.js",
+            "icon.ico"
+        ]
+    }
+}

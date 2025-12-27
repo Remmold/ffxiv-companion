@@ -1,0 +1,47 @@
+name: Deploy to Azure VM
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Deploy to Azure VM
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.AZURE_VM_HOST }}
+          username: ${{ secrets.AZURE_VM_USER }}
+          key: ${{ secrets.AZURE_VM_SSH_KEY }}
+          script: |
+            echo "🚀 Deploying Gathering Gold..."
+            
+            # Navigate to project directory (create if doesn't exist)
+            cd ~/gathering-gold 2>/dev/null || {
+              echo "📦 First time setup - cloning repository..."
+              git clone https://github.com/Remmold/ffxiv-companion.git ~/gathering-gold
+              cd ~/gathering-gold
+            }
+            
+            # Pull latest changes
+            echo "📥 Pulling latest changes..."
+            git fetch origin main
+            git reset --hard origin/main
+            
+            # Build and restart containers
+            echo "🐳 Building and starting Docker containers..."
+            docker-compose down
+            docker-compose build --no-cache
+            docker-compose up -d
+            
+            # Health check
+            echo "🔍 Running health check..."
+            sleep 10
+            curl -f http://localhost:3000/api/health && echo "✅ Deployment successful!" || echo "❌ Health check failed"
+            
+            # Show container status
+            docker ps --format "table {{.Names}}\t{{.Status}}" | grep gathering
