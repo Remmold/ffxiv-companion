@@ -29,7 +29,7 @@ export default function Layout({ children }) {
                             <div className="flex items-center gap-3">
                                 <span className="text-2xl">💰</span>
                                 <h1 className="text-xl font-display font-semibold text-gold hidden md:block">
-                                    Gathering Gold
+                                    FFXIV Companion
                                 </h1>
                             </div>
                             <EorzeanClock compact />
@@ -52,6 +52,17 @@ export default function Layout({ children }) {
                                     <span className="hidden sm:inline">{item.label}</span>
                                 </NavLink>
                             ))}
+                            {/* Home Link */}
+                            <a
+                                href="https://remmold.github.io/remmold-games/index.html"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-gray-200 hover:bg-gray-800/50 transition-colors"
+                                title="Back to Remmold Games"
+                            >
+                                <span>🏠</span>
+                                <span className="hidden lg:inline">Home</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -122,6 +133,12 @@ export default function Layout({ children }) {
             {/* Footer */}
             <footer className="py-5 border-t border-gray-800/50">
                 <div className="max-w-[1600px] mx-auto px-4 text-center text-xs text-gray-600">
+                    <p className="mb-2">
+                        <a href="https://remmold.github.io/remmold-games/index.html" target="_blank" rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 px-3 py-1 rounded bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-colors">
+                            🏠 Remmold Games
+                        </a>
+                    </p>
                     <p>
                         Prices from{' '}
                         <a href="https://universalis.app" target="_blank" rel="noopener noreferrer"

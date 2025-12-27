@@ -165,7 +165,7 @@ export default function OverlayPage() {
                 className="flex items-center justify-between mb-1 py-1 cursor-move select-none"
                 style={{ WebkitAppRegion: 'drag' }}
             >
-                <span className="text-xs font-semibold text-gold">🌟 Gathering Gold</span>
+                <span className="text-xs font-semibold text-gold">🌟 FFXIV Companion</span>
                 <span className="text-xs text-gray-500">{world}</span>
             </div>
 
