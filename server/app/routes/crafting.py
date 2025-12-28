@@ -39,6 +39,13 @@ MATERIAL_PATTERNS = {
 # Crystal item IDs (to exclude from ingredient cost calculations)
 CRYSTAL_IDS = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19}
 
+# Crystal names for display
+CRYSTAL_NAMES = {
+    2: "Fire Shard", 3: "Ice Shard", 4: "Wind Shard", 5: "Earth Shard", 6: "Lightning Shard", 7: "Water Shard",
+    8: "Fire Crystal", 9: "Ice Crystal", 10: "Wind Crystal", 11: "Earth Crystal", 12: "Lightning Crystal", 13: "Water Crystal",
+    14: "Fire Cluster", 15: "Ice Cluster", 16: "Wind Cluster", 17: "Earth Cluster", 18: "Lightning Cluster", 19: "Water Cluster"
+}
+
 
 
 @router.get("/recipes")
@@ -317,13 +324,12 @@ async def get_bulk_material_profit(
     filtered_items = filtered_items[:min(limit * 2, 500)]
 
     
-    # Collect all unique item IDs needed
+    # Collect all unique item IDs needed (including crystals for pricing)
     all_item_ids = set()
     for item in filtered_items:
         all_item_ids.add(item["itemId"])
         for ing in item["ingredients"]:
-            if ing.get("itemId") not in CRYSTAL_IDS:
-                all_item_ids.add(ing["itemId"])
+            all_item_ids.add(ing["itemId"])
     
     # Fetch prices
     prices = await fetch_prices_batched(world, list(all_item_ids))
@@ -341,35 +347,51 @@ async def get_bulk_material_profit(
         # Total sell value for all output items
         total_output_value = output_sell_price * item["yields"]
         
-        # Calculate material costs (excluding crystals)
+        # Calculate material costs (non-crystals)
         total_material_cost = 0
         ingredients_breakdown = []
         
+        # Calculate crystal costs
+        total_crystal_cost = 0
+        crystals_breakdown = []
+        
         for ing in item["ingredients"]:
-            if ing.get("itemId") in CRYSTAL_IDS:
-                continue
-                
-            ing_price = prices.get(str(ing["itemId"]), {})
+            ing_id = ing.get("itemId")
+            ing_price = prices.get(str(ing_id), {})
             ing_unit_price = ing_price.get("nqPrice", 0) or ing_price.get("hqPrice", 0)
-            ing_total_cost = ing_unit_price * ing.get("quantity", 1)
-            total_material_cost += ing_total_cost
+            ing_quantity = ing.get("quantity", 1)
+            ing_total_cost = ing_unit_price * ing_quantity
             
-            ingredients_breakdown.append({
-                "itemId": ing["itemId"],
-                "name": ing.get("name", "Unknown"),
-                "quantity": ing.get("quantity", 1),
-                "unitPrice": ing_unit_price,
-                "totalCost": ing_total_cost
-            })
+            if ing_id in CRYSTAL_IDS:
+                total_crystal_cost += ing_total_cost
+                crystals_breakdown.append({
+                    "itemId": ing_id,
+                    "name": CRYSTAL_NAMES.get(ing_id, ing.get("name", "Unknown")),
+                    "quantity": ing_quantity,
+                    "unitPrice": ing_unit_price,
+                    "totalCost": ing_total_cost
+                })
+            else:
+                total_material_cost += ing_total_cost
+                ingredients_breakdown.append({
+                    "itemId": ing_id,
+                    "name": ing.get("name", "Unknown"),
+                    "quantity": ing_quantity,
+                    "unitPrice": ing_unit_price,
+                    "totalCost": ing_total_cost
+                })
         
         # Skip if no material cost (can't calculate profit)
         if total_material_cost == 0:
             continue
         
-        # Calculate profit
-        profit = total_output_value - total_material_cost
+        # Total cost includes both materials and crystals
+        total_cost = total_material_cost + total_crystal_cost
+        
+        # Calculate profit (including crystal costs)
+        profit = total_output_value - total_cost
         profit_per_item = profit / item["yields"] if item["yields"] > 0 else 0
-        profit_margin = (profit / total_material_cost * 100) if total_material_cost > 0 else 0
+        profit_margin = (profit / total_cost * 100) if total_cost > 0 else 0
         
         results.append({
             "itemId": item["itemId"],
@@ -381,11 +403,14 @@ async def get_bulk_material_profit(
             "sellPrice": output_sell_price,
             "totalOutputValue": total_output_value,
             "totalMaterialCost": round(total_material_cost),
+            "totalCrystalCost": round(total_crystal_cost),
+            "totalCost": round(total_cost),
             "profit": round(profit),
             "profitPerCraft": round(profit),
             "profitMargin": round(profit_margin, 1),
             "isProfitable": profit > 0,
-            "ingredients": ingredients_breakdown
+            "ingredients": ingredients_breakdown,
+            "crystals": crystals_breakdown
         })
     
     # Sort by profit (highest first)

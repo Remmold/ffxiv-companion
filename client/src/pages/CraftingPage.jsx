@@ -936,12 +936,47 @@ function BulkRefiningTab({ world, craftingClass, setCraftingClass }) {
                                                             </span>
                                                         </div>
                                                     ))}
-                                                    <div className="flex justify-between text-sm font-semibold pt-1 border-t border-gray-700/50">
-                                                        <span className="text-gray-200">Total Cost</span>
-                                                        <span className="text-red-400">
-                                                            -{formatGil(item.totalMaterialCost)} gil
+                                                    <div className="flex justify-between text-sm pt-1 border-t border-gray-700/50">
+                                                        <span className="text-gray-400">Materials Subtotal</span>
+                                                        <span className="text-gray-400">
+                                                            {formatGil(item.totalMaterialCost)} gil
                                                         </span>
                                                     </div>
+                                                </div>
+
+                                                {/* Crystals */}
+                                                {item.crystals && item.crystals.length > 0 && (
+                                                    <>
+                                                        <h4 className="text-xs text-gray-500 mb-2 mt-3 uppercase tracking-wide">
+                                                            💎 Crystals
+                                                        </h4>
+                                                        <div className="space-y-1">
+                                                            {item.crystals.map((crystal, idx) => (
+                                                                <div key={idx} className="flex justify-between text-sm">
+                                                                    <span className="text-purple-300">
+                                                                        {crystal.name} ×{crystal.quantity}
+                                                                    </span>
+                                                                    <span className="text-purple-400">
+                                                                        {formatGil(crystal.totalCost)} gil
+                                                                    </span>
+                                                                </div>
+                                                            ))}
+                                                            <div className="flex justify-between text-sm pt-1 border-t border-gray-700/50">
+                                                                <span className="text-gray-400">Crystals Subtotal</span>
+                                                                <span className="text-purple-400">
+                                                                    {formatGil(item.totalCrystalCost)} gil
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </>
+                                                )}
+
+                                                {/* Total Cost */}
+                                                <div className="flex justify-between text-sm font-semibold pt-2 mt-2 border-t border-gray-600">
+                                                    <span className="text-gray-200">Total Cost</span>
+                                                    <span className="text-red-400">
+                                                        -{formatGil(item.totalCost || item.totalMaterialCost)} gil
+                                                    </span>
                                                 </div>
                                             </div>
 
