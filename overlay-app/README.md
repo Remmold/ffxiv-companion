@@ -1,6 +1,6 @@
-# Gathering Gold Overlay
+# FFXIV Companion Overlay
 
-An always-on-top Electron overlay for FFXIV Gathering Gold.
+An always-on-top Electron overlay for FFXIV Companion.
 
 ## Features
 

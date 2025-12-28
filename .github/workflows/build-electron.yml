@@ -1,0 +1,45 @@
+name: Build Electron App
+
+on:
+  push:
+    tags:
+      - 'v*'  # Trigger on version tags like v1.0.0
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: overlay-app/package-lock.json
+      
+      - name: Install dependencies
+        working-directory: overlay-app
+        run: npm ci
+      
+      - name: Build Electron app
+        working-directory: overlay-app
+        run: npm run build
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ffxiv-companion-overlay
+          path: overlay-app/dist/*.exe
+      
+      - name: Create Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: overlay-app/dist/*.exe
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

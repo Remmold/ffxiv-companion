@@ -1,5 +1,5 @@
 /**
- * Gathering Gold Overlay - Electron Main Process
+ * FFXIV Companion Overlay - Electron Main Process
  * 
  * Creates an always-on-top window that displays the overlay page
  * from the running web app or a built version.
@@ -104,7 +104,7 @@ function createTray() {
         }
     ]);
 
-    tray.setToolTip('Gathering Gold Overlay');
+    tray.setToolTip('FFXIV Companion Overlay');
     tray.setContextMenu(contextMenu);
 
     tray.on('click', toggleVisibility);

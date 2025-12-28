@@ -63,6 +63,17 @@ export default function Layout({ children }) {
                                 <span>🏠</span>
                                 <span className="hidden lg:inline">Home</span>
                             </a>
+                            {/* Download Desktop App */}
+                            <a
+                                href="https://github.com/Remmold/ffxiv-companion/releases/latest"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-gray-200 hover:bg-gray-800/50 transition-colors"
+                                title="Download Desktop Overlay App"
+                            >
+                                <span>💻</span>
+                                <span className="hidden lg:inline">App</span>
+                            </a>
                         </div>
                     </div>
                 </div>

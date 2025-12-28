@@ -1,22 +1,22 @@
 {
-    "name": "gathering-gold-overlay",
+    "name": "ffxiv-companion-overlay",
     "version": "1.0.0",
-    "description": "Always-on-top overlay for FFXIV Gathering Gold",
+    "description": "Always-on-top overlay for FFXIV Companion",
     "main": "main.js",
     "scripts": {
         "start": "electron .",
         "dev": "electron . --dev",
         "build": "electron-builder"
     },
-    "author": "",
+    "author": "Remmold",
     "license": "MIT",
     "devDependencies": {
         "electron": "^28.0.0",
         "electron-builder": "^24.9.1"
     },
     "build": {
-        "appId": "com.gatheringgold.overlay",
-        "productName": "Gathering Gold Overlay",
+        "appId": "com.ffxiv-companion.overlay",
+        "productName": "FFXIV Companion Overlay",
         "win": {
             "target": "portable",
             "icon": "icon.ico"
