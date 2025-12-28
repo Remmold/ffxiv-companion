@@ -10,7 +10,7 @@ const path = require('path');
 
 // Configuration
 const DEV_URL = 'http://localhost:5173/overlay';
-const PROD_URL = 'http://localhost:3000/overlay'; // When running built version
+const PROD_URL = 'http://135.236.154.112:3000/overlay';
 
 let mainWindow = null;
 let tray = null;
