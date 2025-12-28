@@ -7,6 +7,6 @@ const { contextBridge, ipcRenderer } = require('electron');
 
 // Expose protected methods to the renderer
 contextBridge.exposeInMainWorld('electronAPI', {
-    // Add any IPC methods here if needed later
-    platform: process.platform
+    platform: process.platform,
+    closeWindow: () => ipcRenderer.send('close-window')
 });

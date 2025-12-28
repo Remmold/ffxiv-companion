@@ -166,7 +166,16 @@ export default function OverlayPage() {
                 style={{ WebkitAppRegion: 'drag' }}
             >
                 <span className="text-xs font-semibold text-gold">🌟 FFXIV Companion</span>
-                <span className="text-xs text-gray-500">{world}</span>
+                <div className="flex items-center gap-2" style={{ WebkitAppRegion: 'no-drag' }}>
+                    <span className="text-xs text-gray-500">{world}</span>
+                    <button
+                        onClick={() => window.electronAPI?.closeWindow?.()}
+                        className="w-5 h-5 flex items-center justify-center rounded-full bg-red-500/20 hover:bg-red-500/40 text-red-400 hover:text-red-300 transition-all text-xs font-bold"
+                        title="Close Overlay"
+                    >
+                        ×
+                    </button>
+                </div>
             </div>
 
             {/* Header */}

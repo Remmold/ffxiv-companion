@@ -5,7 +5,7 @@
  * from the running web app or a built version.
  */
 
-const { app, BrowserWindow, Tray, Menu, globalShortcut, nativeImage, screen } = require('electron');
+const { app, BrowserWindow, Tray, Menu, globalShortcut, nativeImage, screen, ipcMain } = require('electron');
 const path = require('path');
 
 // Configuration
@@ -144,6 +144,11 @@ app.whenReady().then(() => {
     createWindow();
     createTray();
     registerShortcuts();
+
+    // Handle close-window IPC from renderer
+    ipcMain.on('close-window', () => {
+        app.quit();
+    });
 });
 
 app.on('window-all-closed', () => {
