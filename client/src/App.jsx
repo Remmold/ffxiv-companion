@@ -7,6 +7,7 @@ import MarketDealsPage from './pages/MarketDealsPage';
 import GearGuidePage from './pages/GearGuidePage';
 import ChecklistPage from './pages/ChecklistPage';
 import AlliedSocietiesPage from './pages/AlliedSocietiesPage';
+import RetainerVenturesPage from './pages/RetainerVenturesPage';
 import OverlayPage from './pages/OverlayPage';
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
                                 <Route path="/gear" element={<GearGuidePage />} />
                                 <Route path="/checklist" element={<ChecklistPage />} />
                                 <Route path="/tribes" element={<AlliedSocietiesPage />} />
+                                <Route path="/retainers" element={<RetainerVenturesPage />} />
                             </Routes>
                         </Layout>
                     } />

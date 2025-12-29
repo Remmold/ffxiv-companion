@@ -13,7 +13,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 
-from app.routes import nodes, prices, fishing, crafting, collectables, deals
+from app.routes import nodes, prices, fishing, crafting, collectables, deals, retainers
 
 
 @asynccontextmanager
@@ -55,6 +55,7 @@ app.include_router(fishing.router)
 app.include_router(crafting.router)
 app.include_router(collectables.router)
 app.include_router(deals.router)
+app.include_router(retainers.router)
 
 
 @app.get("/api/health")

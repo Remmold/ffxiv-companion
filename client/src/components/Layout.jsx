@@ -12,7 +12,8 @@ const navItems = [
     { path: '/deals', label: 'Deals', icon: '💰' },
     { path: '/gear', label: 'Gear', icon: '⚙️' },
     { path: '/checklist', label: 'Checklist', icon: '📋' },
-    { path: '/tribes', label: 'Tribes', icon: '🤝' }
+    { path: '/tribes', label: 'Tribes', icon: '🤝' },
+    { path: '/retainers', label: 'Retainers', icon: '🎯' }
 ];
 
 export default function Layout({ children }) {
