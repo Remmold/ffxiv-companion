@@ -21,7 +21,6 @@ jobs:
           key: ${{ secrets.AZURE_VM_SSH_KEY }}
           envs: GROQ_API_KEY
           script: |
-            export GROQ_API_KEY=$GROQ_API_KEY
             echo "🚀 Deploying Gathering Gold..."
             
             # Navigate to project directory (create if doesn't exist)
@@ -30,6 +29,9 @@ jobs:
               git clone https://github.com/Remmold/ffxiv-companion.git ~/gathering-gold
               cd ~/gathering-gold
             }
+            
+            # Create .env file with secrets
+            echo "GROQ_API_KEY=$GROQ_API_KEY" > .env
             
             # Pull latest changes
             echo "📥 Pulling latest changes..."
