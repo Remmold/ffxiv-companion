@@ -1,6 +1,6 @@
 *note that this is vibecoded and serves my purposes but isnt meant to be viewed as part of my coding portfolio
 
-# Gathering Gold 🌟
+# FFXIV COMPANION 🌟
 
 A web application to track FFXIV timed gathering nodes and rank them by real-time market value.
 
@@ -123,4 +123,5 @@ ffxiv-gatherbuddy/
 - Prices from [Universalis](https://universalis.app)
 - Data sourcing automated via Teamcraft/Garland Tools logic
 - FINAL FANTASY XIV © SQUARE ENIX CO., LTD.
+
 
