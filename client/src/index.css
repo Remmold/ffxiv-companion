@@ -2,7 +2,112 @@
 @tailwind components;
 @tailwind utilities;
 
-/* FFXIV-inspired base styles */
+/* ============================================
+   FFXIV Clear Blue Theme System
+   Based on FFXIV's Clear Blue UI theme
+   ============================================ */
+
+:root {
+  /* FFXIV Clear Blue Colors */
+  --ffxiv-deep-blue: #0a1628;
+  --ffxiv-navy: #0d1f3c;
+  --ffxiv-blue: #132744;
+  --ffxiv-accent-blue: #4a9eff;
+  --ffxiv-light-blue: #a8d4ff;
+  --ffxiv-gold: #ffd700;
+  --ffxiv-gold-dim: rgba(255, 215, 0, 0.6);
+  --ffxiv-gold-glow: rgba(255, 215, 0, 0.3);
+
+  /* Border Colors */
+  --ffxiv-border-blue: rgba(74, 158, 255, 0.3);
+  --ffxiv-border-gold: rgba(255, 215, 0, 0.4);
+
+  /* Glass Panel */
+  --ffxiv-panel: linear-gradient(135deg, rgba(20, 40, 80, 0.9), rgba(15, 30, 60, 0.95));
+  --ffxiv-panel-hover: linear-gradient(135deg, rgba(25, 50, 90, 0.9), rgba(20, 40, 70, 0.95));
+}
+
+/* FFXIV Clear Blue Page Background */
+.ffxiv-page {
+  background: linear-gradient(135deg,
+      var(--ffxiv-deep-blue) 0%,
+      var(--ffxiv-navy) 25%,
+      var(--ffxiv-blue) 50%,
+      var(--ffxiv-navy) 75%,
+      var(--ffxiv-deep-blue) 100%);
+  min-height: 100vh;
+}
+
+/* FFXIV Glass Panel - for cards and containers */
+.ffxiv-panel {
+  background: var(--ffxiv-panel);
+  border: 1px solid var(--ffxiv-border-blue);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.ffxiv-panel:hover {
+  border-color: var(--ffxiv-border-gold);
+  box-shadow: 0 0 15px var(--ffxiv-gold-glow);
+}
+
+/* FFXIV Gold Header Text */
+.ffxiv-title {
+  color: var(--ffxiv-gold);
+  text-shadow: 0 0 10px var(--ffxiv-gold-glow);
+}
+
+/* FFXIV Button Styles */
+.ffxiv-button {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 180, 0, 0.15));
+  border: 1px solid var(--ffxiv-border-gold);
+  color: var(--ffxiv-gold);
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.ffxiv-button:hover {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 180, 0, 0.2));
+  box-shadow: 0 0 15px var(--ffxiv-gold-glow);
+}
+
+/* FFXIV Text Colors */
+.ffxiv-text-blue {
+  color: var(--ffxiv-light-blue);
+}
+
+.ffxiv-text-gold {
+  color: var(--ffxiv-gold);
+}
+
+/* Crystal Decoration */
+.ffxiv-crystal {
+  position: absolute;
+  opacity: 0.05;
+  background: linear-gradient(45deg, var(--ffxiv-accent-blue), #7eb8ff);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  animation: crystal-pulse 4s ease-in-out infinite;
+}
+
+@keyframes crystal-pulse {
+
+  0%,
+  100% {
+    opacity: 0.05;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.1;
+    transform: scale(1.1);
+  }
+}
+
+/* ============================================
+   Original FFXIV-inspired base styles
+   ============================================ */
+
 body {
   background: linear-gradient(180deg, #0c0c14 0%, #121220 50%, #0a0a12 100%);
   color: #e8e4dc;

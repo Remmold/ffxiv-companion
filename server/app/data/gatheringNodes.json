@@ -75,6 +75,21 @@
         "isLegendary": true
     },
     {
+        "itemId": 46243,
+        "itemName": "Cordia Sap",
+        "level": 100,
+        "etSpawnStart": 0,
+        "etSpawnEnd": 2,
+        "zone": "Yak T'el",
+        "nearestAetheryte": "Mamook",
+        "coordinates": "X: 35.8, Y: 22.3",
+        "expansion": "DT",
+        "gatheringClass": "Botanist",
+        "isCollectable": false,
+        "isEphemeral": false,
+        "isLegendary": true
+    },
+    {
         "itemId": 49209,
         "itemName": "Rose Garnet Ore",
         "level": 100,
@@ -467,6 +482,21 @@
     {
         "itemId": 45968,
         "itemName": "Cordia Log",
+        "level": 100,
+        "etSpawnStart": 12,
+        "etSpawnEnd": 14,
+        "zone": "Yak T'el",
+        "nearestAetheryte": "Mamook",
+        "coordinates": "X: 35.8, Y: 22.3",
+        "expansion": "DT",
+        "gatheringClass": "Botanist",
+        "isCollectable": false,
+        "isEphemeral": false,
+        "isLegendary": true
+    },
+    {
+        "itemId": 46243,
+        "itemName": "Cordia Sap",
         "level": 100,
         "etSpawnStart": 12,
         "etSpawnEnd": 14,

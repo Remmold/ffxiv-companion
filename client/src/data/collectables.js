@@ -2,15 +2,12 @@
  * Collectable turn-in items for FFXIV gatherers.
  * Used to earn White and Purple Gatherer's Scrips.
  * Collectability is now capped at 1000 (post-rework system).
+ * 
+ * NOTE: Orange Scrip collectables (Lv.100) are "Rarefied" items from timed nodes.
+ * See timedNodeScrips.js for Orange Scrip gatherable items.
  */
 
 export const collectables = [
-    // Dawntrail (Lv. 100) - Purple Scrips
-    { name: "Fennec Fur", level: 100, job: "Botanist", location: "Shaaloani", aetheryte: "Hhusatahwi", scrip: "Orange", value: 144, collectability: { min: 600, mid: 800, max: 1000 } },
-    { name: "Turali Corn", level: 100, job: "Botanist", location: "Yak T'el", aetheryte: "Mamook", scrip: "Orange", value: 144, collectability: { min: 600, mid: 800, max: 1000 } },
-    { name: "Rroneek Fleece", level: 100, job: "Botanist", location: "Kozama'uka", aetheryte: "Ok'hanu", scrip: "Orange", value: 144, collectability: { min: 600, mid: 800, max: 1000 } },
-    { name: "Turali Alumen", level: 100, job: "Miner", location: "Urqopacha", aetheryte: "Wachunpelo", scrip: "Orange", value: 144, collectability: { min: 600, mid: 800, max: 1000 } },
-    { name: "Electroite", level: 100, job: "Miner", location: "Shaaloani", aetheryte: "Hhusatahwi", scrip: "Orange", value: 144, collectability: { min: 600, mid: 800, max: 1000 } },
 
     // Endwalker (Lv. 90) - Purple Scrips
     { name: "Chloroschist", level: 90, job: "Miner", location: "Garlemald", aetheryte: "Camp Broken Glass", scrip: "Purple", value: 108, collectability: { min: 500, mid: 700, max: 1000 } },

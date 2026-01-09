@@ -1,0 +1,234 @@
+[
+    {
+        "itemId": 44157,
+        "itemName": "Crafter's Competence Materia XII",
+        "currencyType": "Orange Scrip",
+        "currencyCost": 500,
+        "category": "Materia",
+        "vendor": "Scrip Exchange"
+    },
+    {
+        "itemId": 44158,
+        "itemName": "Crafter's Cunning Materia XII",
+        "currencyType": "Orange Scrip",
+        "currencyCost": 500,
+        "category": "Materia",
+        "vendor": "Scrip Exchange"
+    },
+    {
+        "itemId": 44159,
+        "itemName": "Crafter's Command Materia XII",
+        "currencyType": "Orange Scrip",
+        "currencyCost": 500,
+        "category": "Materia",
+        "vendor": "Scrip Exchange"
+    },
+    {
+        "itemId": 44160,
+        "itemName": "Gatherer's Guerdon Materia XII",
+        "currencyType": "Orange Scrip",
+        "currencyCost": 500,
+        "category": "Materia",
+        "vendor": "Scrip Exchange"
+    },
+    {
+        "itemId": 44161,
+        "itemName": "Gatherer's Guile Materia XII",
+        "currencyType": "Orange Scrip",
+        "currencyCost": 500,
+        "category": "Materia",
+        "vendor": "Scrip Exchange"
+    },
+    {
+        "itemId": 44162,
+        "itemName": "Gatherer's Grasp Materia XII",
+        "currencyType": "Orange Scrip",
+        "currencyCost": 500,
+        "category": "Materia",
+        "vendor": "Scrip Exchange"
+    },
+    {
+        "itemId": 33918,
+        "itemName": "Crafter's Competence Materia X",
+        "currencyType": "Purple Scrip",
+        "currencyCost": 250,
+        "category": "Materia",
+        "vendor": "Scrip Exchange"
+    },
+    {
+        "itemId": 33919,
+        "itemName": "Crafter's Cunning Materia X",
+        "currencyType": "Purple Scrip",
+        "currencyCost": 250,
+        "category": "Materia",
+        "vendor": "Scrip Exchange"
+    },
+    {
+        "itemId": 33920,
+        "itemName": "Crafter's Command Materia X",
+        "currencyType": "Purple Scrip",
+        "currencyCost": 250,
+        "category": "Materia",
+        "vendor": "Scrip Exchange"
+    },
+    {
+        "itemId": 33921,
+        "itemName": "Gatherer's Guerdon Materia X",
+        "currencyType": "Purple Scrip",
+        "currencyCost": 250,
+        "category": "Materia",
+        "vendor": "Scrip Exchange"
+    },
+    {
+        "itemId": 33922,
+        "itemName": "Gatherer's Guile Materia X",
+        "currencyType": "Purple Scrip",
+        "currencyCost": 250,
+        "category": "Materia",
+        "vendor": "Scrip Exchange"
+    },
+    {
+        "itemId": 33923,
+        "itemName": "Gatherer's Grasp Materia X",
+        "currencyType": "Purple Scrip",
+        "currencyCost": 250,
+        "category": "Materia",
+        "vendor": "Scrip Exchange"
+    },
+    {
+        "itemId": 41082,
+        "itemName": "Savage Aim Materia XII",
+        "currencyType": "Mathematics",
+        "currencyCost": 400,
+        "category": "Materia",
+        "vendor": "Tomestone Exchange"
+    },
+    {
+        "itemId": 41083,
+        "itemName": "Savage Might Materia XII",
+        "currencyType": "Mathematics",
+        "currencyCost": 400,
+        "category": "Materia",
+        "vendor": "Tomestone Exchange"
+    },
+    {
+        "itemId": 41084,
+        "itemName": "Heavens' Eye Materia XII",
+        "currencyType": "Mathematics",
+        "currencyCost": 400,
+        "category": "Materia",
+        "vendor": "Tomestone Exchange"
+    },
+    {
+        "itemId": 41085,
+        "itemName": "Quickarm Materia XII",
+        "currencyType": "Mathematics",
+        "currencyCost": 400,
+        "category": "Materia",
+        "vendor": "Tomestone Exchange"
+    },
+    {
+        "itemId": 41086,
+        "itemName": "Quicktongue Materia XII",
+        "currencyType": "Mathematics",
+        "currencyCost": 400,
+        "category": "Materia",
+        "vendor": "Tomestone Exchange"
+    },
+    {
+        "itemId": 41087,
+        "itemName": "Battledance Materia XII",
+        "currencyType": "Mathematics",
+        "currencyCost": 400,
+        "category": "Materia",
+        "vendor": "Tomestone Exchange"
+    },
+    {
+        "itemId": 41088,
+        "itemName": "Piety Materia XII",
+        "currencyType": "Mathematics",
+        "currencyCost": 400,
+        "category": "Materia",
+        "vendor": "Tomestone Exchange"
+    },
+    {
+        "itemId": 33931,
+        "itemName": "Savage Aim Materia X",
+        "currencyType": "Poetics",
+        "currencyCost": 150,
+        "category": "Materia",
+        "vendor": "Tomestone Exchange"
+    },
+    {
+        "itemId": 33932,
+        "itemName": "Savage Might Materia X",
+        "currencyType": "Poetics",
+        "currencyCost": 150,
+        "category": "Materia",
+        "vendor": "Tomestone Exchange"
+    },
+    {
+        "itemId": 33933,
+        "itemName": "Heavens' Eye Materia X",
+        "currencyType": "Poetics",
+        "currencyCost": 150,
+        "category": "Materia",
+        "vendor": "Tomestone Exchange"
+    },
+    {
+        "itemId": 33934,
+        "itemName": "Quickarm Materia X",
+        "currencyType": "Poetics",
+        "currencyCost": 150,
+        "category": "Materia",
+        "vendor": "Tomestone Exchange"
+    },
+    {
+        "itemId": 33935,
+        "itemName": "Quicktongue Materia X",
+        "currencyType": "Poetics",
+        "currencyCost": 150,
+        "category": "Materia",
+        "vendor": "Tomestone Exchange"
+    },
+    {
+        "itemId": 33936,
+        "itemName": "Battledance Materia X",
+        "currencyType": "Poetics",
+        "currencyCost": 150,
+        "category": "Materia",
+        "vendor": "Tomestone Exchange"
+    },
+    {
+        "itemId": 33937,
+        "itemName": "Piety Materia X",
+        "currencyType": "Poetics",
+        "currencyCost": 150,
+        "category": "Materia",
+        "vendor": "Tomestone Exchange"
+    },
+    {
+        "itemId": 36256,
+        "itemName": "Immutable Solution",
+        "currencyType": "Purple Scrip",
+        "currencyCost": 125,
+        "category": "Material",
+        "vendor": "Scrip Exchange"
+    },
+    {
+        "itemId": 36257,
+        "itemName": "Sublime Solution",
+        "currencyType": "Orange Scrip",
+        "currencyCost": 125,
+        "category": "Material",
+        "vendor": "Scrip Exchange"
+    },
+    {
+        "itemId": 28721,
+        "itemName": "Aethersand",
+        "currencyType": "White Scrip",
+        "currencyCost": 200,
+        "category": "Material",
+        "vendor": "Scrip Exchange"
+    }
+]

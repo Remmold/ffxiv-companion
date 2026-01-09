@@ -9,6 +9,8 @@ dependencies = [
     "uvicorn[standard]>=0.32.0",
     "httpx>=0.28.0",
     "cachetools>=5.5.0",
+    "pydantic-ai[groq]>=0.0.30",
+    "python-dotenv>=1.0.0",
 ]
 
 [project.scripts]

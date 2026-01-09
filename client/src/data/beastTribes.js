@@ -13,7 +13,7 @@ export const beastTribes = [
         expansion: 'DT',
         type: 'Gatherer',
         location: 'Urqopacha',
-        aetheryte: 'Wachunpelo',
+        aetheryte: 'Tuliyollal',
         icon: '🦙',
         rewards: ['Orange Gatherer Scrips', 'Materia', 'Mounts', 'Minions'],
         unlockLevel: 80,
@@ -27,10 +27,10 @@ export const beastTribes = [
             },
             {
                 type: 'quest',
-                name: 'Pelu Forlorn',
-                location: 'Solution Nine',
-                npc: 'Ketenramm',
-                coords: 'X: 9.2, Y: 13.2',
+                name: 'An Intrepid New Enterprise',
+                location: 'Tuliyollal',
+                npc: 'Blue-garbed Pelu',
+                coords: 'X: 13.6, Y: 12.9',
                 description: 'Starting quest to unlock Pelupelu tribe'
             }
         ],

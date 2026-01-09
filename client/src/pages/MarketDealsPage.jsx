@@ -167,60 +167,66 @@ export default function MarketDealsPage() {
     });
 
     return (
-        <div className="max-w-7xl mx-auto px-4 py-6">
+        <div className="px-4 py-6 ffxiv-page min-h-screen">
             {/* Header */}
-            <div className="mb-6">
-                <h1 className="text-2xl font-display font-semibold text-gold mb-2">
-                    💰 Market Deals
-                </h1>
-                <p className="text-gray-400 text-sm">
-                    Find arbitrage, crashes, key materials, and browse all material prices.
-                </p>
+            <div className="flex items-center justify-between mb-8 pb-4" style={{ borderBottom: '1px solid rgba(255, 215, 0, 0.2)' }}>
+                <div className="flex items-center gap-4">
+                    <img src="/deals.png" alt="Market Deals" className="w-16 h-16 rounded-lg object-cover"
+                        style={{ border: '2px solid rgba(255, 215, 0, 0.4)', boxShadow: '0 0 15px rgba(255, 215, 0, 0.2)' }} />
+                    <div>
+                        <h1 className="text-3xl font-bold mb-1 ffxiv-title">
+                            Market Deals
+                        </h1>
+                        <p className="text-sm text-blue-200" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}>
+                            Find arbitrage, crashes, key materials, and browse all material prices.
+                        </p>
+                    </div>
+                </div>
             </div>
 
             {/* Tabs */}
-            <div className="flex gap-2 mb-4 flex-wrap">
+            <div className="flex gap-2 mb-6 flex-wrap">
                 <button
                     onClick={() => setTab('arbitrage')}
-                    className={`px-4 py-2 rounded text-sm font-medium transition-colors ${tab === 'arbitrage'
-                        ? 'bg-green-900/30 text-green-400 border border-green-500/50'
-                        : 'bg-gray-800/50 text-gray-400 hover:text-gray-200 border border-transparent'
+                    className={`px-6 py-2 rounded-lg text-sm font-bold transition-all duration-300 flex items-center gap-2 ${tab === 'arbitrage'
+                        ? 'bg-gradient-to-r from-blue-900/80 to-blue-800/80 text-gold border border-gold shadow-[0_0_10px_rgba(255,215,0,0.3)]'
+                        : 'bg-black/40 text-blue-300 border border-transparent hover:bg-blue-900/40 hover:text-white'
                         }`}
                 >
-                    🔄 Arbitrage
+                    <span>🔄</span> Arbitrage
                 </button>
                 <button
                     onClick={() => setTab('crashes')}
-                    className={`px-4 py-2 rounded text-sm font-medium transition-colors ${tab === 'crashes'
-                        ? 'bg-red-900/30 text-red-400 border border-red-500/50'
-                        : 'bg-gray-800/50 text-gray-400 hover:text-gray-200 border border-transparent'
+                    className={`px-6 py-2 rounded-lg text-sm font-bold transition-all duration-300 flex items-center gap-2 ${tab === 'crashes'
+                        ? 'bg-gradient-to-r from-blue-900/80 to-blue-800/80 text-gold border border-gold shadow-[0_0_10px_rgba(255,215,0,0.3)]'
+                        : 'bg-black/40 text-blue-300 border border-transparent hover:bg-blue-900/40 hover:text-white'
                         }`}
                 >
-                    📉 Crashes
+                    <span>📉</span> Crashes
                 </button>
                 <button
                     onClick={() => setTab('keyMaterials')}
-                    className={`px-4 py-2 rounded text-sm font-medium transition-colors ${tab === 'keyMaterials'
-                        ? 'bg-yellow-900/30 text-yellow-400 border border-yellow-500/50'
-                        : 'bg-gray-800/50 text-gray-400 hover:text-gray-200 border border-transparent'
+                    className={`px-6 py-2 rounded-lg text-sm font-bold transition-all duration-300 flex items-center gap-2 ${tab === 'keyMaterials'
+                        ? 'bg-gradient-to-r from-blue-900/80 to-blue-800/80 text-gold border border-gold shadow-[0_0_10px_rgba(255,215,0,0.3)]'
+                        : 'bg-black/40 text-blue-300 border border-transparent hover:bg-blue-900/40 hover:text-white'
                         }`}
                 >
-                    ⭐ Key Materials
+                    <span>⭐</span> Key Materials
                 </button>
                 <button
                     onClick={() => setTab('materials')}
-                    className={`px-4 py-2 rounded text-sm font-medium transition-colors ${tab === 'materials'
-                        ? 'bg-blue-900/30 text-blue-400 border border-blue-500/50'
-                        : 'bg-gray-800/50 text-gray-400 hover:text-gray-200 border border-transparent'
+                    className={`px-6 py-2 rounded-lg text-sm font-bold transition-all duration-300 flex items-center gap-2 ${tab === 'materials'
+                        ? 'bg-gradient-to-r from-blue-900/80 to-blue-800/80 text-gold border border-gold shadow-[0_0_10px_rgba(255,215,0,0.3)]'
+                        : 'bg-black/40 text-blue-300 border border-transparent hover:bg-blue-900/40 hover:text-white'
                         }`}
                 >
-                    🧱 All Materials
+                    <span>🧱</span> All Materials
                 </button>
             </div>
 
             {/* Filters Card - Different per tab */}
             {(tab === 'arbitrage' || tab === 'crashes') && (
-                <div className="card p-5 mb-6">
+                <div className="ffxiv-panel p-5 mb-6">
                     <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
                         Settings
                     </h3>
@@ -295,7 +301,7 @@ export default function MarketDealsPage() {
             )}
 
             {tab === 'keyMaterials' && (
-                <div className="card p-4 mb-6">
+                <div className="ffxiv-panel p-4 mb-6">
                     <div className="flex items-center gap-3">
                         <span className="text-sm text-gray-400">Showing prices for:</span>
                         <span className="text-yellow-400 font-medium">{selectedWorld || 'Select a world in the header'}</span>
@@ -307,7 +313,7 @@ export default function MarketDealsPage() {
             )}
 
             {tab === 'materials' && (
-                <div className="card p-5 mb-6">
+                <div className="ffxiv-panel p-5 mb-6">
                     <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center gap-3">
                             <span className="text-sm text-gray-400">Prices for:</span>
@@ -398,7 +404,7 @@ export default function MarketDealsPage() {
 
             {/* Loading */}
             {isLoading && (
-                <div className="card p-8 text-center text-gray-500">
+                <div className="ffxiv-panel p-8 text-center text-gray-500">
                     {tab === 'materials' ? `Loading materials for ${selectedWorld}...` :
                         tab === 'keyMaterials' ? `Fetching key material prices for ${selectedWorld}...` :
                             `Scanning ${dataCenter} for deals...`}
@@ -407,7 +413,7 @@ export default function MarketDealsPage() {
 
             {/* Arbitrage Tab */}
             {!isLoading && tab === 'arbitrage' && (
-                <div className="card overflow-hidden">
+                <div className="ffxiv-panel overflow-hidden">
                     {deals?.arbitrage?.length > 0 ? (
                         <table className="w-full">
                             <thead className="bg-gray-800/50">
@@ -451,7 +457,7 @@ export default function MarketDealsPage() {
 
             {/* Crashes Tab */}
             {!isLoading && tab === 'crashes' && (
-                <div className="card overflow-hidden">
+                <div className="ffxiv-panel overflow-hidden">
                     {deals?.crashes?.length > 0 ? (
                         <table className="w-full">
                             <thead className="bg-gray-800/50">
@@ -501,7 +507,7 @@ export default function MarketDealsPage() {
 
             {/* Key Materials Tab */}
             {!isLoading && tab === 'keyMaterials' && (
-                <div className="card overflow-hidden">
+                <div className="ffxiv-panel overflow-hidden">
                     {!selectedWorld ? (
                         <div className="p-8 text-center text-gray-500">
                             Select a world in the header to see key material prices.
@@ -572,7 +578,7 @@ export default function MarketDealsPage() {
 
             {/* All Materials Tab */}
             {!isLoading && tab === 'materials' && (
-                <div className="card overflow-hidden">
+                <div className="ffxiv-panel overflow-hidden">
                     {!selectedWorld ? (
                         <div className="p-8 text-center text-gray-500">
                             Select a world in the header to see material prices.

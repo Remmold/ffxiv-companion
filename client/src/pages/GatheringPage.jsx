@@ -586,42 +586,48 @@ export default function GatheringPage() {
     const { selectedWorld } = useFilters();
 
     return (
-        <div className="px-4 py-6">
+        <div className="px-4 py-6 ffxiv-page min-h-screen">
             {/* Header with tab toggle */}
-            <div className="flex items-center justify-between mb-6">
-                <div>
-                    <h1 className="text-2xl font-display font-semibold text-gold mb-1">
-                        ⛏️ Gathering
-                    </h1>
-                    <p className="text-sm text-gray-400">
-                        Track timed nodes and fishing spots for maximum profit
-                    </p>
+            <div className="flex items-center justify-between mb-8 pb-4" style={{ borderBottom: '1px solid rgba(255, 215, 0, 0.2)' }}>
+                <div className="flex items-center gap-4">
+                    <img src="/miner.png" alt="Gathering" className="w-16 h-16 rounded-lg object-cover"
+                        style={{ border: '2px solid rgba(255, 215, 0, 0.4)', boxShadow: '0 0 15px rgba(255, 215, 0, 0.2)' }} />
+                    <div>
+                        <h1 className="text-3xl font-bold mb-1 ffxiv-title">
+                            Gathering Log
+                        </h1>
+                        <p className="text-sm text-blue-200" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}>
+                            Track timed nodes and fishing spots for maximum profit
+                        </p>
+                    </div>
                 </div>
                 <div className="flex gap-2">
                     <button
                         onClick={() => setActiveTab('nodes')}
-                        className={`px-4 py-2 rounded text-sm font-medium transition-colors ${activeTab === 'nodes'
-                            ? 'bg-gold/20 text-gold border border-gold/30'
-                            : 'bg-gray-800 text-gray-400 hover:text-gray-200'
+                        className={`px-6 py-2 rounded-lg text-sm font-bold transition-all duration-300 flex items-center gap-2 ${activeTab === 'nodes'
+                            ? 'bg-gradient-to-r from-blue-900/80 to-blue-800/80 text-gold border border-gold shadow-[0_0_10px_rgba(255,215,0,0.3)]'
+                            : 'bg-black/40 text-blue-300 border border-transparent hover:bg-blue-900/40 hover:text-white'
                             }`}
                     >
-                        ⛏️ Nodes
+                        <span>⛏️</span> Nodes
                     </button>
                     <button
                         onClick={() => setActiveTab('fishing')}
-                        className={`px-4 py-2 rounded text-sm font-medium transition-colors ${activeTab === 'fishing'
-                            ? 'bg-gold/20 text-gold border border-gold/30'
-                            : 'bg-gray-800 text-gray-400 hover:text-gray-200'
+                        className={`px-6 py-2 rounded-lg text-sm font-bold transition-all duration-300 flex items-center gap-2 ${activeTab === 'fishing'
+                            ? 'bg-gradient-to-r from-blue-900/80 to-blue-800/80 text-gold border border-gold shadow-[0_0_10px_rgba(255,215,0,0.3)]'
+                            : 'bg-black/40 text-blue-300 border border-transparent hover:bg-blue-900/40 hover:text-white'
                             }`}
                     >
-                        🎣 Fishing
+                        <span>🎣</span> Fishing
                     </button>
                 </div>
             </div>
 
             {/* Tab Content */}
-            {activeTab === 'nodes' && <NodesTab world={selectedWorld} />}
-            {activeTab === 'fishing' && <FishingTab world={selectedWorld} />}
+            <div className="animate-fadeIn">
+                {activeTab === 'nodes' && <NodesTab world={selectedWorld} />}
+                {activeTab === 'fishing' && <FishingTab world={selectedWorld} />}
+            </div>
         </div>
     );
 }

@@ -206,69 +206,77 @@ export default function ChecklistPage() {
     const expansionOrder = ['DT', 'EW', 'ShB', 'SB', 'HW'];
 
     return (
-        <div className="max-w-7xl mx-auto px-4 py-6">
+        <div className="px-4 py-6 ffxiv-page min-h-screen">
             {/* Header */}
-            <div className="mb-6">
-                <h1 className="text-2xl font-display font-semibold text-gold mb-2">
-                    📋 Daily & Weekly Checklist
-                </h1>
-                <p className="text-gray-400 text-sm">
-                    Track your recurring FFXIV activities. Items reset automatically.
-                </p>
+            <div className="flex items-center justify-between mb-8 pb-4" style={{ borderBottom: '1px solid rgba(255, 215, 0, 0.2)' }}>
+                <div className="flex items-center gap-4">
+                    <img src="/checklist.png" alt="Checklist" className="w-16 h-16 rounded-lg object-cover"
+                        style={{ border: '2px solid rgba(255, 215, 0, 0.4)', boxShadow: '0 0 15px rgba(255, 215, 0, 0.2)' }} />
+                    <div>
+                        <h1 className="text-3xl font-bold mb-1 ffxiv-title">
+                            Daily & Weekly Checklist
+                        </h1>
+                        <p className="text-sm text-blue-200" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}>
+                            Track your recurring FFXIV activities. Items reset automatically.
+                        </p>
+                    </div>
+                </div>
             </div>
 
             {/* Reset Timers */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                 {/* Daily Reset */}
-                <div className="card p-5">
-                    <div className="flex justify-between items-start mb-2">
-                        <div className="text-sm text-gray-500">🌅 Daily Reset</div>
+                <div className="ffxiv-panel p-5 relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 p-2 opacity-50 text-6xl pointer-events-none group-hover:opacity-20 transition-opacity">🌅</div>
+                    <div className="flex justify-between items-start mb-2 relative z-10">
+                        <div className="text-sm text-gray-400 font-bold uppercase tracking-wider">Daily Reset</div>
                         <button
                             onClick={handleResetDaily}
-                            className="text-xs text-gray-600 hover:text-red-400 transition-colors"
+                            className="text-xs text-blue-300 hover:text-red-400 transition-colors border border-blue-800/50 rounded px-2 py-1 bg-black/20"
                         >
                             Reset
                         </button>
                     </div>
-                    <div className="text-3xl font-mono font-bold text-gold mb-2">
+                    <div className="text-4xl font-mono font-bold text-gold mb-2 relative z-10 drop-shadow-md">
                         {dailyTimer.hours}h {dailyTimer.minutes}m
                     </div>
-                    <div className="flex items-center gap-3">
-                        <div className="flex-1 h-2 bg-gray-800 rounded-full overflow-hidden">
+                    <div className="flex items-center gap-3 relative z-10">
+                        <div className="flex-1 h-3 bg-black/50 rounded-full overflow-hidden border border-gray-700">
                             <div
-                                className="h-full bg-gradient-to-r from-amber-500 to-yellow-400 transition-all"
+                                className="h-full bg-gradient-to-r from-amber-600 to-yellow-400 shadow-[0_0_10px_rgba(251,191,36,0.5)] transition-all"
                                 style={{ width: `${dailyPercent}%` }}
                             />
                         </div>
-                        <span className="text-sm text-gray-400">{dailyCompleted}/{dailyTotal}</span>
+                        <span className="text-sm text-gray-300 font-mono">{dailyCompleted}/{dailyTotal}</span>
                     </div>
-                    <div className="text-xs text-gray-600 mt-2">3:00 PM UTC</div>
+                    <div className="text-xs text-gray-500 mt-2 italic relative z-10">Resets at 3:00 PM UTC</div>
                 </div>
 
                 {/* Weekly Reset */}
-                <div className="card p-5">
-                    <div className="flex justify-between items-start mb-2">
-                        <div className="text-sm text-gray-500">📅 Weekly Reset</div>
+                <div className="ffxiv-panel p-5 relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 p-2 opacity-50 text-6xl pointer-events-none group-hover:opacity-20 transition-opacity">📅</div>
+                    <div className="flex justify-between items-start mb-2 relative z-10">
+                        <div className="text-sm text-gray-400 font-bold uppercase tracking-wider">Weekly Reset</div>
                         <button
                             onClick={handleResetWeekly}
-                            className="text-xs text-gray-600 hover:text-red-400 transition-colors"
+                            className="text-xs text-blue-300 hover:text-red-400 transition-colors border border-blue-800/50 rounded px-2 py-1 bg-black/20"
                         >
                             Reset
                         </button>
                     </div>
-                    <div className="text-3xl font-mono font-bold text-gold mb-2">
+                    <div className="text-4xl font-mono font-bold text-gold mb-2 relative z-10 drop-shadow-md">
                         {weeklyTimer.days}d {weeklyTimer.hours}h {weeklyTimer.minutes}m
                     </div>
-                    <div className="flex items-center gap-3">
-                        <div className="flex-1 h-2 bg-gray-800 rounded-full overflow-hidden">
+                    <div className="flex items-center gap-3 relative z-10">
+                        <div className="flex-1 h-3 bg-black/50 rounded-full overflow-hidden border border-gray-700">
                             <div
-                                className="h-full bg-gradient-to-r from-blue-500 to-cyan-400 transition-all"
+                                className="h-full bg-gradient-to-r from-blue-600 to-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.5)] transition-all"
                                 style={{ width: `${weeklyPercent}%` }}
                             />
                         </div>
-                        <span className="text-sm text-gray-400">{weeklyActualCompleted}/{weeklyTotal}</span>
+                        <span className="text-sm text-gray-300 font-mono">{weeklyActualCompleted}/{weeklyTotal}</span>
                     </div>
-                    <div className="text-xs text-gray-600 mt-2">Tuesday 8:00 AM UTC</div>
+                    <div className="text-xs text-gray-500 mt-2 italic relative z-10">Resets Tuesday 8:00 AM UTC</div>
                 </div>
             </div>
 
@@ -278,12 +286,12 @@ export default function ChecklistPage() {
                     <button
                         key={tab}
                         onClick={() => setActiveTab(tab)}
-                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === tab
-                                ? 'bg-gold/20 text-gold border border-gold/30'
-                                : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/50'
+                        className={`px-6 py-2 rounded-lg text-sm font-bold transition-all duration-300 uppercase tracking-widest ${activeTab === tab
+                            ? 'bg-gradient-to-r from-blue-900/80 to-blue-800/80 text-gold border border-gold shadow-[0_0_10px_rgba(255,215,0,0.3)]'
+                            : 'bg-black/40 text-gray-400 border border-transparent hover:bg-blue-900/40 hover:text-white'
                             }`}
                     >
-                        {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                        {tab}
                     </button>
                 ))}
             </div>
@@ -302,9 +310,9 @@ export default function ChecklistPage() {
                             return (
                                 <div
                                     key={item.id}
-                                    className={`card p-4 transition-all ${isCompleted
-                                            ? 'bg-green-900/20 border-green-700/40'
-                                            : 'hover:border-gray-600'
+                                    className={`ffxiv-panel p-4 transition-all ${isCompleted
+                                        ? 'bg-green-900/20 border-green-700/40'
+                                        : 'hover:border-gray-600'
                                         }`}
                                 >
                                     <div className="flex items-start justify-between">
@@ -378,9 +386,9 @@ export default function ChecklistPage() {
                             return (
                                 <div
                                     key={item.id}
-                                    className={`card p-4 transition-all ${isCompleted
-                                            ? 'bg-green-900/20 border-green-700/40'
-                                            : 'hover:border-gray-600'
+                                    className={`ffxiv-panel p-4 transition-all ${isCompleted
+                                        ? 'bg-green-900/20 border-green-700/40'
+                                        : 'hover:border-gray-600'
                                         }`}
                                 >
                                     <div className="flex items-start justify-between">
@@ -439,7 +447,7 @@ export default function ChecklistPage() {
                     </div>
 
                     {/* Custom Deliveries Section */}
-                    <div className="card overflow-hidden">
+                    <div className="ffxiv-panel overflow-hidden">
                         <button
                             onClick={() => toggleSection('customDeliveries')}
                             className="w-full p-4 flex items-center justify-between hover:bg-gray-800/30 transition-colors"
@@ -497,10 +505,10 @@ export default function ChecklistPage() {
                                                         <div
                                                             key={npc.id}
                                                             className={`p-3 rounded-lg border transition-all ${isCompleted
-                                                                    ? 'bg-green-900/20 border-green-700/40'
-                                                                    : atCap
-                                                                        ? 'bg-gray-800/30 border-gray-700/30 opacity-50'
-                                                                        : 'bg-gray-800/30 border-gray-700/50 hover:border-gray-600'
+                                                                ? 'bg-green-900/20 border-green-700/40'
+                                                                : atCap
+                                                                    ? 'bg-gray-800/30 border-gray-700/30 opacity-50'
+                                                                    : 'bg-gray-800/30 border-gray-700/50 hover:border-gray-600'
                                                                 }`}
                                                         >
                                                             <div className="flex items-center justify-between">
@@ -524,10 +532,10 @@ export default function ChecklistPage() {
                                                                 </div>
                                                                 <div className="flex items-center gap-2">
                                                                     <span className={`text-xs px-2 py-0.5 rounded ${npc.scripType === 'Purple'
-                                                                            ? 'bg-purple-900/30 text-purple-400'
-                                                                            : npc.scripType === 'Orange'
-                                                                                ? 'bg-orange-900/30 text-orange-400'
-                                                                                : 'bg-gray-700/50 text-gray-300'
+                                                                        ? 'bg-purple-900/30 text-purple-400'
+                                                                        : npc.scripType === 'Orange'
+                                                                            ? 'bg-orange-900/30 text-orange-400'
+                                                                            : 'bg-gray-700/50 text-gray-300'
                                                                         }`}>
                                                                         {npc.scripType}
                                                                     </span>

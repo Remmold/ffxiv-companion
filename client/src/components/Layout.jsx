@@ -13,67 +13,74 @@ const navItems = [
     { path: '/gear', label: 'Gear', icon: '⚙️' },
     { path: '/checklist', label: 'Checklist', icon: '📋' },
     { path: '/tribes', label: 'Tribes', icon: '🤝' },
-    { path: '/retainers', label: 'Retainers', icon: '🎯' }
+    { path: '/retainers', label: 'Retainers', icon: '🎯' },
+    { path: '/exchanges', label: 'Exchanges', icon: '🔄' },
+    { path: '/assistant', label: 'AI', icon: '🤖' }
 ];
 
 export default function Layout({ children }) {
     const { selectedWorld, setSelectedWorld, selectedExpansion, setSelectedExpansion } = useFilters();
 
     return (
-        <div className="min-h-screen flex flex-col">
-            {/* Navigation */}
-            <nav className="ffxiv-header sticky top-0 z-50">
+        <div className="min-h-screen flex flex-col ffxiv-page">
+            {/* FFXIV Clear Blue Navigation */}
+            <nav className="sticky top-0 z-50"
+                style={{
+                    background: 'linear-gradient(180deg, rgba(20, 40, 80, 0.98) 0%, rgba(13, 31, 60, 0.99) 100%)',
+                    borderBottom: '1px solid rgba(74, 158, 255, 0.3)',
+                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.4)'
+                }}>
                 <div className="max-w-[1600px] mx-auto px-4 py-2">
                     <div className="flex items-center justify-between">
-                        {/* Logo */}
-                        <div className="flex items-center gap-4">
-                            <div className="flex items-center gap-3">
-                                <span className="text-2xl">💰</span>
-                                <h1 className="text-xl font-display font-semibold text-gold hidden md:block">
-                                    FFXIV Companion
-                                </h1>
-                            </div>
+                        {/* Logo with Moogle */}
+                        <div className="flex items-center gap-3">
+                            <img src="/moogle.png" alt="" className="w-10 h-10 rounded-lg object-cover"
+                                style={{ border: '1px solid rgba(255, 215, 0, 0.3)' }} />
+                            <h1 className="text-xl font-bold hidden md:block"
+                                style={{ color: '#ffd700', textShadow: '0 0 10px rgba(255, 215, 0, 0.3)' }}>
+                                FFXIV Companion
+                            </h1>
                             <EorzeanClock compact />
                         </div>
 
-                        {/* Nav Links - Fill remaining space equally */}
+                        {/* Nav Links - FFXIV Style */}
                         <div className="flex-1 flex items-center gap-1 ml-4">
                             {navItems.map(item => (
                                 <NavLink
                                     key={item.path}
                                     to={item.path}
                                     className={({ isActive }) =>
-                                        `flex-1 flex items-center justify-center gap-2 px-2 py-2 rounded-lg text-sm font-medium transition-colors ${isActive
-                                            ? 'bg-gold/20 text-gold border border-gold/30'
-                                            : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/50'
+                                        `flex-1 flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${isActive
+                                            ? ''
+                                            : ''
                                         }`
                                     }
+                                    style={({ isActive }) => isActive ? {
+                                        background: 'linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 180, 0, 0.1))',
+                                        border: '1px solid rgba(255, 215, 0, 0.4)',
+                                        color: '#ffd700',
+                                        boxShadow: '0 0 10px rgba(255, 215, 0, 0.2)'
+                                    } : {
+                                        background: 'transparent',
+                                        border: '1px solid transparent',
+                                        color: '#a8d4ff'
+                                    }}
                                 >
                                     <span>{item.icon}</span>
                                     <span className="hidden sm:inline">{item.label}</span>
                                 </NavLink>
                             ))}
-                            {/* Home Link */}
+                            {/* External Links */}
                             <a
                                 href="https://remmold.github.io/remmold-games/index.html"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-gray-200 hover:bg-gray-800/50 transition-colors"
+                                className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all"
+                                style={{ color: '#a8d4ff', border: '1px solid transparent' }}
                                 title="Back to Remmold Games"
                             >
                                 <span>🏠</span>
                                 <span className="hidden lg:inline">Home</span>
-                            </a>
-                            {/* Download Desktop App */}
-                            <a
-                                href="https://github.com/Remmold/ffxiv-companion/releases/latest"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-gray-200 hover:bg-gray-800/50 transition-colors"
-                                title="Download Desktop Overlay App"
-                            >
-                                <span>💻</span>
-                                <span className="hidden lg:inline">App</span>
                             </a>
                         </div>
                     </div>
@@ -81,16 +88,25 @@ export default function Layout({ children }) {
             </nav>
 
             {/* Global Filters Bar */}
-            <div className="bg-gray-900/80 border-b border-gray-800/50 sticky top-[52px] z-40">
+            <div className="sticky top-[52px] z-40"
+                style={{
+                    background: 'rgba(10, 22, 40, 0.95)',
+                    borderBottom: '1px solid rgba(74, 158, 255, 0.2)'
+                }}>
                 <div className="max-w-[1600px] mx-auto px-4 py-2">
                     <div className="flex items-center justify-between gap-4">
-                        {/* World Selector (compact) */}
+                        {/* World Selector */}
                         <div className="flex items-center gap-2">
-                            <span className="text-xs text-gray-500">World:</span>
+                            <span className="text-xs" style={{ color: '#a8d4ff' }}>World:</span>
                             <select
                                 value={selectedWorld}
                                 onChange={(e) => setSelectedWorld(e.target.value)}
-                                className="bg-gray-800 border border-gray-700 rounded px-2 py-1 text-sm text-gray-200 min-w-[140px]"
+                                className="rounded px-2 py-1 text-sm min-w-[140px]"
+                                style={{
+                                    background: 'rgba(10, 20, 40, 0.8)',
+                                    border: '1px solid rgba(74, 158, 255, 0.3)',
+                                    color: '#e0f0ff'
+                                }}
                             >
                                 <option value="">Select World</option>
                                 {regionOrder.map(region => (
@@ -111,10 +127,16 @@ export default function Layout({ children }) {
                                 <button
                                     key={exp.value}
                                     onClick={() => setSelectedExpansion(exp.value)}
-                                    className={`px-3 py-1 rounded text-xs font-medium transition-colors ${selectedExpansion === exp.value
-                                        ? 'bg-gold/20 text-gold border border-gold/30'
-                                        : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800'
-                                        }`}
+                                    className="px-3 py-1 rounded text-xs font-medium transition-all"
+                                    style={selectedExpansion === exp.value ? {
+                                        background: 'linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 180, 0, 0.1))',
+                                        border: '1px solid rgba(255, 215, 0, 0.4)',
+                                        color: '#ffd700'
+                                    } : {
+                                        background: 'transparent',
+                                        border: '1px solid transparent',
+                                        color: '#a8d4ff'
+                                    }}
                                 >
                                     {exp.value === 'All' ? 'All' : exp.value}
                                 </button>
@@ -127,7 +149,8 @@ export default function Layout({ children }) {
             {/* Main Content with Sidebars */}
             <div className="flex-1 flex">
                 {/* Left Sidebar - Timed Nodes */}
-                <aside className="hidden lg:block w-64 flex-shrink-0 border-r border-gray-800/50 p-4 sticky top-[100px] h-[calc(100vh-100px)] overflow-y-auto">
+                <aside className="hidden lg:block w-64 flex-shrink-0 p-4 sticky top-[100px] h-[calc(100vh-100px)] overflow-y-auto"
+                    style={{ borderRight: '1px solid rgba(74, 158, 255, 0.15)' }}>
                     <TimedNodesSidebar />
                 </aside>
 
@@ -137,30 +160,40 @@ export default function Layout({ children }) {
                 </main>
 
                 {/* Right Sidebar - Filler Nodes */}
-                <aside className="hidden xl:block w-64 flex-shrink-0 border-l border-gray-800/50 p-4 sticky top-[100px] h-[calc(100vh-100px)] overflow-y-auto">
+                <aside className="hidden xl:block w-64 flex-shrink-0 p-4 sticky top-[100px] h-[calc(100vh-100px)] overflow-y-auto"
+                    style={{ borderLeft: '1px solid rgba(74, 158, 255, 0.15)' }}>
                     <FillerNodesSidebar />
                 </aside>
             </div>
 
-            {/* Footer */}
-            <footer className="py-5 border-t border-gray-800/50">
-                <div className="max-w-[1600px] mx-auto px-4 text-center text-xs text-gray-600">
+            {/* Footer - FFXIV Themed */}
+            <footer className="py-5"
+                style={{
+                    borderTop: '1px solid rgba(74, 158, 255, 0.2)',
+                    background: 'rgba(10, 22, 40, 0.8)'
+                }}>
+                <div className="max-w-[1600px] mx-auto px-4 text-center text-xs">
                     <p className="mb-2">
                         <a href="https://remmold.github.io/remmold-games/index.html" target="_blank" rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 px-3 py-1 rounded bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-colors">
+                            className="inline-flex items-center gap-1 px-3 py-1 rounded transition-all"
+                            style={{
+                                background: 'linear-gradient(135deg, rgba(74, 158, 255, 0.2), rgba(74, 158, 255, 0.1))',
+                                border: '1px solid rgba(74, 158, 255, 0.3)',
+                                color: '#a8d4ff'
+                            }}>
                             🏠 Remmold Games
                         </a>
                     </p>
-                    <p>
+                    <p style={{ color: 'rgba(168, 212, 255, 0.6)' }}>
                         Prices from{' '}
                         <a href="https://universalis.app" target="_blank" rel="noopener noreferrer"
-                            className="text-blue-400 hover:underline">Universalis</a>
+                            style={{ color: '#4a9eff' }}>Universalis</a>
                         {' '}• Icons from{' '}
                         <a href="https://xivapi.com" target="_blank" rel="noopener noreferrer"
-                            className="text-blue-400 hover:underline">XIVAPI</a>
+                            style={{ color: '#4a9eff' }}>XIVAPI</a>
                         {' '}• Not affiliated with Square Enix
                     </p>
-                    <p className="mt-1 text-gray-700">
+                    <p className="mt-1" style={{ color: 'rgba(168, 212, 255, 0.3)' }}>
                         FINAL FANTASY XIV © SQUARE ENIX CO., LTD.
                     </p>
                 </div>

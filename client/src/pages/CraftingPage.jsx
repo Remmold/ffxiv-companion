@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import WorldSelector from '../components/WorldSelector';
 import { useFilters } from '../context/FilterContext';
 import { craftingClasses, expansions } from '../data/ffxivData';
@@ -62,6 +62,8 @@ function LevequestsTab({ world, craftingClass, setCraftingClass }) {
     const [error, setError] = useState(null);
     const [lastUpdate, setLastUpdate] = useState(null);
     const [expandedRecipe, setExpandedRecipe] = useState(null);
+    const [priceSort, setPriceSort] = useState('server'); // 'server' or 'dc'
+    const [quality, setQuality] = useState('nq'); // 'nq', 'hq', or 'best'
 
     // Fetch categories on mount
     useEffect(() => {
@@ -120,11 +122,27 @@ function LevequestsTab({ world, craftingClass, setCraftingClass }) {
         setExpandedRecipe(expandedRecipe === recipeId ? null : recipeId);
     };
 
+    // Sort recipes based on server or DC price and quality
+    const sortedRecipes = useMemo(() => {
+        return [...filteredRecipes].sort((a, b) => {
+            // For recipes, we sort by profit which considers material costs
+            // Quality affects the sell price of the output
+            if (priceSort === 'dc') {
+                return (b.dcPrice || 0) - (a.dcPrice || 0);
+            }
+            // Use hqProfit or nqProfit if available, otherwise fallback to profit
+            if (quality === 'hq') {
+                return (b.hqProfit || b.profit || 0) - (a.hqProfit || a.profit || 0);
+            }
+            return (b.profit || 0) - (a.profit || 0);
+        });
+    }, [filteredRecipes, priceSort, quality]);
+
     return (
         <>
             {/* Filters */}
             <div className="card p-4 mb-6">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
                     {/* Crafting Class */}
                     <div>
                         <label className="block text-xs text-gray-500 mb-2">Crafting Class</label>
@@ -172,6 +190,60 @@ function LevequestsTab({ world, craftingClass, setCraftingClass }) {
                             ))}
                         </select>
                     </div>
+
+                    {/* Price Sort */}
+                    <div>
+                        <label className="block text-xs text-gray-500 mb-2">Sort by Price</label>
+                        <div className="flex gap-1.5">
+                            <button
+                                onClick={() => setPriceSort('server')}
+                                className={`px-2.5 py-1.5 rounded text-xs font-semibold transition-all flex-1
+                                    ${priceSort === 'server'
+                                        ? 'bg-gold/20 text-gold border border-gold/50'
+                                        : 'bg-black/20 text-gray-500 border border-gray-700/50 hover:border-gray-600'
+                                    }`}
+                            >
+                                🏠 Server
+                            </button>
+                            <button
+                                onClick={() => setPriceSort('dc')}
+                                className={`px-2.5 py-1.5 rounded text-xs font-semibold transition-all flex-1
+                                    ${priceSort === 'dc'
+                                        ? 'bg-gold/20 text-gold border border-gold/50'
+                                        : 'bg-black/20 text-gray-500 border border-gray-700/50 hover:border-gray-600'
+                                    }`}
+                            >
+                                🌐 DC
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Quality Toggle */}
+                    <div>
+                        <label className="block text-xs text-gray-500 mb-2">Quality</label>
+                        <div className="flex gap-1.5">
+                            <button
+                                onClick={() => setQuality('nq')}
+                                className={`px-2.5 py-1.5 rounded text-xs font-semibold transition-all flex-1
+                                    ${quality === 'nq'
+                                        ? 'bg-gray-600/30 text-gray-200 border border-gray-500'
+                                        : 'bg-black/20 text-gray-500 border border-gray-700/50 hover:border-gray-600'
+                                    }`}
+                            >
+                                NQ
+                            </button>
+                            <button
+                                onClick={() => setQuality('hq')}
+                                className={`px-2.5 py-1.5 rounded text-xs font-semibold transition-all flex-1
+                                    ${quality === 'hq'
+                                        ? 'bg-blue-600/30 text-blue-300 border border-blue-500'
+                                        : 'bg-black/20 text-gray-500 border border-gray-700/50 hover:border-gray-600'
+                                    }`}
+                            >
+                                ✨ HQ
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -186,13 +258,13 @@ function LevequestsTab({ world, craftingClass, setCraftingClass }) {
             {/* Header Row */}
             <div className="flex items-center justify-between mb-4">
                 <div className="text-xs text-gray-500">
-                    Showing <span className="text-gold">{filteredRecipes.length}</span> recipes
+                    Showing <span className="text-gold">{sortedRecipes.length}</span> recipes
                     {lastUpdate && (
                         <span className="ml-2">• Updated: {lastUpdate.toLocaleTimeString()}</span>
                     )}
                 </div>
-                {world && filteredRecipes.length > 0 && (
-                    <div className="text-xs text-gray-500">Sorted by profit (highest first)</div>
+                {world && sortedRecipes.length > 0 && (
+                    <div className="text-xs text-gray-500">Sorted by {priceSort === 'dc' ? 'DC lowest' : 'server'} price</div>
                 )}
             </div>
 
@@ -213,7 +285,7 @@ function LevequestsTab({ world, craftingClass, setCraftingClass }) {
             {/* Recipe Cards */}
             {!isLoading && (
                 <div className="space-y-3">
-                    {filteredRecipes.map((recipe) => {
+                    {sortedRecipes.map((recipe) => {
                         const isExpanded = expandedRecipe === recipe.recipeId;
                         const hasPriceData = recipe.profit !== undefined;
                         const classInfo = craftingClasses.find(c => c.value === recipe.craftingClass);
@@ -250,14 +322,26 @@ function LevequestsTab({ world, craftingClass, setCraftingClass }) {
 
                                     {/* Profit Display */}
                                     {hasPriceData && (
-                                        <div className="text-right">
-                                            <div className={`text-xl font-bold ${recipe.isProfitable ? 'text-green-400' : 'text-red-400'}`}>
+                                        <div className="text-right min-w-[140px]">
+                                            <div className={`text-lg font-bold ${recipe.isProfitable ? 'text-green-400' : 'text-red-400'}`}>
                                                 {recipe.isProfitable ? '+' : ''}{formatGil(recipe.profit)}
                                                 <span className="text-xs text-gray-500 ml-1">gil</span>
                                             </div>
                                             <div className="text-xs text-gray-500">
-                                                {recipe.profitMargin > 0 ? '+' : ''}{recipe.profitMargin}% margin
+                                                @ {formatGil(recipe.outputSellPrice)} each
                                             </div>
+                                            {/* DC Lowest */}
+                                            {recipe.dcSellPrice > 0 && recipe.dcSellWorld && (
+                                                <div className={`text-xs mt-1 ${recipe.dcSellWorld === world ? 'text-green-500' : 'text-blue-400'}`}>
+                                                    {recipe.dcSellWorld === world ? (
+                                                        <span>✓ Cheapest on DC</span>
+                                                    ) : (
+                                                        <span>
+                                                            DC: {formatGil(recipe.dcSellPrice)} ({recipe.dcSellWorld})
+                                                        </span>
+                                                    )}
+                                                </div>
+                                            )}
                                         </div>
                                     )}
 
@@ -334,6 +418,8 @@ function CollectablesTab({ world, craftingClass, setCraftingClass }) {
     const [lastUpdate, setLastUpdate] = useState(null);
     const [expandedItem, setExpandedItem] = useState(null);
     const [expandedMaterial, setExpandedMaterial] = useState(null);
+    const [priceSort, setPriceSort] = useState('server'); // 'server' or 'dc'
+    const [quality, setQuality] = useState('nq'); // 'nq' or 'hq'
 
     const fetchCollectables = useCallback(async () => {
         try {
@@ -403,6 +489,21 @@ function CollectablesTab({ world, craftingClass, setCraftingClass }) {
         if (selectedExpansions.length === 0) return true;
         return selectedExpansions.includes(item.expansion);
     });
+
+    // Sort collectables based on selected price type and quality
+    const sortedCollectables = useMemo(() => {
+        return [...filteredCollectables].sort((a, b) => {
+            // For collectables, we sort by cost (lower is better)
+            if (priceSort === 'dc') {
+                return (a.dcTotalCost || 0) - (b.dcTotalCost || 0);
+            }
+            // Use HQ or NQ costs if available
+            if (quality === 'hq') {
+                return (a.hqTotalCost || a.totalCost || 0) - (b.hqTotalCost || b.totalCost || 0);
+            }
+            return (a.totalCost || 0) - (b.totalCost || 0);
+        });
+    }, [filteredCollectables, priceSort, quality]);
 
     return (
         <>
@@ -482,6 +583,60 @@ function CollectablesTab({ world, craftingClass, setCraftingClass }) {
                         ))}
                     </div>
                 </div>
+
+                {/* Price Sort */}
+                <div>
+                    <label className="block text-xs text-gray-500 mb-2">Sort by Price</label>
+                    <div className="flex gap-1.5">
+                        <button
+                            onClick={() => setPriceSort('server')}
+                            className={`px-2.5 py-1 rounded text-xs font-semibold transition-all
+                                ${priceSort === 'server'
+                                    ? 'bg-gold/20 text-gold border border-gold/50'
+                                    : 'bg-black/20 text-gray-500 border border-gray-700/50 hover:border-gray-600'
+                                }`}
+                        >
+                            🏠 Server
+                        </button>
+                        <button
+                            onClick={() => setPriceSort('dc')}
+                            className={`px-2.5 py-1 rounded text-xs font-semibold transition-all
+                                ${priceSort === 'dc'
+                                    ? 'bg-gold/20 text-gold border border-gold/50'
+                                    : 'bg-black/20 text-gray-500 border border-gray-700/50 hover:border-gray-600'
+                                }`}
+                        >
+                            🌐 DC
+                        </button>
+                    </div>
+                </div>
+
+                {/* Quality Toggle */}
+                <div>
+                    <label className="block text-xs text-gray-500 mb-2">Quality</label>
+                    <div className="flex gap-1.5">
+                        <button
+                            onClick={() => setQuality('nq')}
+                            className={`px-2.5 py-1 rounded text-xs font-semibold transition-all
+                                ${quality === 'nq'
+                                    ? 'bg-gray-600/30 text-gray-200 border border-gray-500'
+                                    : 'bg-black/20 text-gray-500 border border-gray-700/50 hover:border-gray-600'
+                                }`}
+                        >
+                            NQ
+                        </button>
+                        <button
+                            onClick={() => setQuality('hq')}
+                            className={`px-2.5 py-1 rounded text-xs font-semibold transition-all
+                                ${quality === 'hq'
+                                    ? 'bg-blue-600/30 text-blue-300 border border-blue-500'
+                                    : 'bg-black/20 text-gray-500 border border-gray-700/50 hover:border-gray-600'
+                                }`}
+                        >
+                            ✨ HQ
+                        </button>
+                    </div>
+                </div>
             </div>
 
             {/* Info Banner */}
@@ -503,8 +658,11 @@ function CollectablesTab({ world, craftingClass, setCraftingClass }) {
             {/* Header Row */}
             <div className="flex items-center justify-between mb-4">
                 <div className="text-xs text-gray-500">
-                    Showing <span className="text-gold">{filteredCollectables.length}</span> collectables
+                    Showing <span className="text-gold">{sortedCollectables.length}</span> collectables
                     {lastUpdate && (<span className="ml-2">• Updated: {lastUpdate.toLocaleTimeString()}</span>)}
+                </div>
+                <div className="text-xs text-gray-500">
+                    Sorted by {priceSort === 'dc' ? 'DC lowest' : 'server'} cost
                 </div>
             </div>
 
@@ -525,7 +683,7 @@ function CollectablesTab({ world, craftingClass, setCraftingClass }) {
             {/* Collectables List */}
             {!isLoading && (
                 <div className="space-y-3">
-                    {filteredCollectables.map((item) => {
+                    {sortedCollectables.map((item) => {
                         const colors = SCRIP_COLORS[item.scrip] || SCRIP_COLORS.Purple;
                         const isExpanded = expandedItem === item.itemId;
                         const hasCost = item.totalOptimalCost > 0;
@@ -716,6 +874,8 @@ function BulkRefiningTab({ world, craftingClass, setCraftingClass }) {
     const [error, setError] = useState(null);
     const [lastUpdate, setLastUpdate] = useState(null);
     const [expandedItem, setExpandedItem] = useState(null);
+    const [priceSort, setPriceSort] = useState('server'); // 'server' or 'dc'
+    const [quality, setQuality] = useState('nq'); // 'nq' or 'hq'
 
     const fetchMaterials = useCallback(async () => {
         if (!world) {
@@ -764,6 +924,20 @@ function BulkRefiningTab({ world, craftingClass, setCraftingClass }) {
     const toggleExpand = (itemId) => {
         setExpandedItem(expandedItem === itemId ? null : itemId);
     };
+
+    // Sort materials based on selected price type and quality
+    const sortedMaterials = useMemo(() => {
+        return [...filteredMaterials].sort((a, b) => {
+            if (priceSort === 'dc') {
+                return (b.dcProfit || 0) - (a.dcProfit || 0);
+            }
+            // Use HQ or NQ profit if available
+            if (quality === 'hq') {
+                return (b.hqProfit || b.profit || 0) - (a.hqProfit || a.profit || 0);
+            }
+            return (b.profit || 0) - (a.profit || 0);
+        });
+    }, [filteredMaterials, priceSort, quality]);
 
     return (
         <>
@@ -826,6 +1000,56 @@ function BulkRefiningTab({ world, craftingClass, setCraftingClass }) {
                         ))}
                     </div>
                 </div>
+
+                {/* Price Sort */}
+                <div className="mt-4">
+                    <label className="block text-xs text-gray-500 mb-2">Sort by Price</label>
+                    <div className="flex gap-2">
+                        <button
+                            onClick={() => setPriceSort('server')}
+                            className={`px-3 py-1.5 rounded text-sm font-medium transition-colors ${priceSort === 'server'
+                                ? 'bg-gold/20 text-gold border border-gold/30'
+                                : 'bg-gray-800 text-gray-400 hover:text-gray-200'
+                                }`}
+                        >
+                            🏠 Server
+                        </button>
+                        <button
+                            onClick={() => setPriceSort('dc')}
+                            className={`px-3 py-1.5 rounded text-sm font-medium transition-colors ${priceSort === 'dc'
+                                ? 'bg-gold/20 text-gold border border-gold/30'
+                                : 'bg-gray-800 text-gray-400 hover:text-gray-200'
+                                }`}
+                        >
+                            🌐 DC Lowest
+                        </button>
+                    </div>
+                </div>
+
+                {/* Quality Toggle */}
+                <div className="mt-4">
+                    <label className="block text-xs text-gray-500 mb-2">Quality</label>
+                    <div className="flex gap-2">
+                        <button
+                            onClick={() => setQuality('nq')}
+                            className={`px-3 py-1.5 rounded text-sm font-medium transition-colors ${quality === 'nq'
+                                ? 'bg-gray-600/30 text-gray-200 border border-gray-500'
+                                : 'bg-gray-800 text-gray-400 hover:text-gray-200'
+                                }`}
+                        >
+                            NQ
+                        </button>
+                        <button
+                            onClick={() => setQuality('hq')}
+                            className={`px-3 py-1.5 rounded text-sm font-medium transition-colors ${quality === 'hq'
+                                ? 'bg-blue-600/30 text-blue-300 border border-blue-500'
+                                : 'bg-gray-800 text-gray-400 hover:text-gray-200'
+                                }`}
+                        >
+                            ✨ HQ
+                        </button>
+                    </div>
+                </div>
             </div>
 
 
@@ -839,13 +1063,13 @@ function BulkRefiningTab({ world, craftingClass, setCraftingClass }) {
             {/* Header Row */}
             <div className="flex items-center justify-between mb-4">
                 <div className="text-xs text-gray-500">
-                    Showing <span className="text-gold">{filteredMaterials.length}</span> profitable materials
+                    Showing <span className="text-gold">{sortedMaterials.length}</span> profitable materials
                     {lastUpdate && (
                         <span className="ml-2">• Updated: {lastUpdate.toLocaleTimeString()}</span>
                     )}
                 </div>
                 <div className="text-xs text-gray-500">
-                    Sorted by profit (highest first)
+                    Sorted by {priceSort === 'dc' ? 'DC lowest' : 'server'} price
                 </div>
             </div>
 
@@ -866,7 +1090,7 @@ function BulkRefiningTab({ world, craftingClass, setCraftingClass }) {
             {/* Materials List */}
             {!isLoading && world && (
                 <div className="space-y-3">
-                    {filteredMaterials.map((item) => {
+                    {sortedMaterials.map((item) => {
                         const isExpanded = expandedItem === item.itemId;
                         const classInfo = craftingClasses.find(c => c.value === item.craftingClass);
 
@@ -903,14 +1127,27 @@ function BulkRefiningTab({ world, craftingClass, setCraftingClass }) {
                                     </div>
 
                                     {/* Profit Display */}
-                                    <div className="text-right">
-                                        <div className={`text-xl font-bold ${item.isProfitable ? 'text-green-400' : 'text-red-400'}`}>
+                                    <div className="text-right min-w-[140px]">
+                                        {/* Server Profit */}
+                                        <div className={`text-lg font-bold ${item.isProfitable ? 'text-green-400' : 'text-red-400'}`}>
                                             {item.isProfitable ? '+' : ''}{formatGil(item.profit)}
                                             <span className="text-xs text-gray-500 ml-1">gil</span>
                                         </div>
                                         <div className="text-xs text-gray-500">
-                                            {item.profitMargin > 0 ? '+' : ''}{item.profitMargin}% margin
+                                            @ {formatGil(item.sellPrice)} each
                                         </div>
+                                        {/* DC Lowest */}
+                                        {item.dcSellPrice > 0 && item.dcSellWorld && (
+                                            <div className={`text-xs mt-1 ${item.dcSellWorld === world ? 'text-green-500' : 'text-blue-400'}`}>
+                                                {item.dcSellWorld === world ? (
+                                                    <span>✓ Cheapest on DC</span>
+                                                ) : (
+                                                    <span>
+                                                        DC: {formatGil(item.dcSellPrice)} ({item.dcSellWorld})
+                                                    </span>
+                                                )}
+                                            </div>
+                                        )}
                                     </div>
 
                                     <div className="ml-3 text-gray-500">{isExpanded ? '▲' : '▼'}</div>
@@ -1032,93 +1269,65 @@ function BulkRefiningTab({ world, craftingClass, setCraftingClass }) {
 // ============================================
 
 export default function CraftingPage() {
-    const [activeTab, setActiveTab] = useState('levequests');
+    const [activeTab, setActiveTab] = useState('leves');
     const { selectedWorld } = useFilters();
     const [craftingClass, setCraftingClass] = useState('All');
 
     return (
-        <div className="px-4 py-6">
-            {/* Header */}
-            <div className="mb-6">
-                <h1 className="text-2xl font-display font-semibold text-gold mb-2">
-                    🔨 Crafting
-                </h1>
-                <p className="text-gray-400 text-sm">
-                    Calculate crafting profits and find optimal scrip turn-ins.
-                </p>
-
-            </div>
-
-            {/* Tab Navigation */}
-            <div className="card p-4 mb-6">
-                <label className="block text-xs text-gray-500 mb-2">Mode</label>
+        <div className="px-4 py-6 ffxiv-page min-h-screen">
+            {/* Header with tab toggle */}
+            <div className="flex items-center justify-between mb-8 pb-4" style={{ borderBottom: '1px solid rgba(255, 215, 0, 0.2)' }}>
+                <div className="flex items-center gap-4">
+                    <img src="/crafter.png" alt="Crafting" className="w-16 h-16 rounded-lg object-cover"
+                        style={{ border: '2px solid rgba(255, 215, 0, 0.4)', boxShadow: '0 0 15px rgba(255, 215, 0, 0.2)' }} />
+                    <div>
+                        <h1 className="text-3xl font-bold mb-1 ffxiv-title">
+                            Crafting Log
+                        </h1>
+                        <p className="text-sm text-blue-200" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}>
+                            Find profitable recipes and collectables
+                        </p>
+                    </div>
+                </div>
                 <div className="flex gap-2">
                     <button
-                        onClick={() => setActiveTab('levequests')}
-                        className={`flex-1 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${activeTab === 'levequests'
-                            ? 'bg-gold/20 text-gold border border-gold/30'
-                            : 'bg-gray-800 text-gray-400 hover:text-gray-200 hover:bg-gray-700'
+                        onClick={() => setActiveTab('leves')}
+                        className={`px-6 py-2 rounded-lg text-sm font-bold transition-all duration-300 flex items-center gap-2 ${activeTab === 'leves'
+                            ? 'bg-gradient-to-r from-blue-900/80 to-blue-800/80 text-gold border border-gold shadow-[0_0_10px_rgba(255,215,0,0.3)]'
+                            : 'bg-black/40 text-blue-300 border border-transparent hover:bg-blue-900/40 hover:text-white'
                             }`}
                     >
-                        <div className="flex items-center justify-center gap-2">
-                            <span className="text-lg">📜</span>
-                            <span>Profit Calculator</span>
-                        </div>
-                        <div className="text-xs text-gray-500 mt-1">Recipes & levequests</div>
+                        <span>📜</span> Recipes
                     </button>
                     <button
                         onClick={() => setActiveTab('collectables')}
-                        className={`flex-1 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${activeTab === 'collectables'
-                            ? 'bg-gold/20 text-gold border border-gold/30'
-                            : 'bg-gray-800 text-gray-400 hover:text-gray-200 hover:bg-gray-700'
+                        className={`px-6 py-2 rounded-lg text-sm font-bold transition-all duration-300 flex items-center gap-2 ${activeTab === 'collectables'
+                            ? 'bg-gradient-to-r from-blue-900/80 to-blue-800/80 text-gold border border-gold shadow-[0_0_10px_rgba(255,215,0,0.3)]'
+                            : 'bg-black/40 text-blue-300 border border-transparent hover:bg-blue-900/40 hover:text-white'
                             }`}
                     >
-                        <div className="flex items-center justify-center gap-2">
-                            <span className="text-lg">🧰</span>
-                            <span>Scrip Turn-ins</span>
-                        </div>
-                        <div className="text-xs text-gray-500 mt-1">Collectables for scrips</div>
-                    </button>
-                    <button
-                        onClick={() => setActiveTab('bulkrefining')}
-                        className={`flex-1 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${activeTab === 'bulkrefining'
-                            ? 'bg-gold/20 text-gold border border-gold/30'
-                            : 'bg-gray-800 text-gray-400 hover:text-gray-200 hover:bg-gray-700'
-                            }`}
-                    >
-                        <div className="flex items-center justify-center gap-2">
-                            <span className="text-lg">🪨</span>
-                            <span>Bulk Refining</span>
-                        </div>
-                        <div className="text-xs text-gray-500 mt-1">Material processing</div>
+                        <span>💎</span> Collectables
                     </button>
                 </div>
             </div>
 
             {/* Tab Content */}
-            {activeTab === 'levequests' && (
-                <LevequestsTab
-                    world={selectedWorld}
-                    craftingClass={craftingClass}
-                    setCraftingClass={setCraftingClass}
-                />
-            )}
-
-            {activeTab === 'collectables' && (
-                <CollectablesTab
-                    world={selectedWorld}
-                    craftingClass={craftingClass}
-                    setCraftingClass={setCraftingClass}
-                />
-            )}
-
-            {activeTab === 'bulkrefining' && (
-                <BulkRefiningTab
-                    world={selectedWorld}
-                    craftingClass={craftingClass}
-                    setCraftingClass={setCraftingClass}
-                />
-            )}
+            <div className="animate-fadeIn">
+                {activeTab === 'leves' && (
+                    <LevequestsTab
+                        world={selectedWorld}
+                        craftingClass={craftingClass}
+                        setCraftingClass={setCraftingClass}
+                    />
+                )}
+                {activeTab === 'collectables' && (
+                    <CollectablesTab
+                        world={selectedWorld}
+                        craftingClass={craftingClass}
+                        setCraftingClass={setCraftingClass}
+                    />
+                )}
+            </div>
         </div>
     );
 }

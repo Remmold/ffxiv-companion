@@ -15,6 +15,7 @@ const PROD_URL = 'http://135.236.154.112:3000/overlay';
 let mainWindow = null;
 let tray = null;
 let isVisible = true;
+let pricePreference = 'server'; // 'server' or 'dcLowest'
 
 // Check if running in dev mode
 const isDev = process.argv.includes('--dev');
@@ -95,6 +96,33 @@ function createTray() {
                 }
             }
         },
+        {
+            label: 'Price Priority',
+            submenu: [
+                {
+                    label: 'Your Server',
+                    type: 'radio',
+                    checked: pricePreference === 'server',
+                    click: () => {
+                        pricePreference = 'server';
+                        if (mainWindow) {
+                            mainWindow.webContents.send('price-preference-changed', pricePreference);
+                        }
+                    }
+                },
+                {
+                    label: 'DC Lowest',
+                    type: 'radio',
+                    checked: pricePreference === 'dcLowest',
+                    click: () => {
+                        pricePreference = 'dcLowest';
+                        if (mainWindow) {
+                            mainWindow.webContents.send('price-preference-changed', pricePreference);
+                        }
+                    }
+                }
+            ]
+        },
         { type: 'separator' },
         {
             label: 'Quit',
@@ -148,6 +176,11 @@ app.whenReady().then(() => {
     // Handle close-window IPC from renderer
     ipcMain.on('close-window', () => {
         app.quit();
+    });
+
+    // Handle get-price-preference IPC from renderer
+    ipcMain.handle('get-price-preference', () => {
+        return pricePreference;
     });
 });
 

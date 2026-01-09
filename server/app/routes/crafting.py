@@ -25,15 +25,14 @@ CRAFTABLE_PATH = Path(__file__).parent.parent / "data" / "craftableItems.json"
 with open(CRAFTABLE_PATH, "r", encoding="utf-8") as f:
     CRAFTABLE_ITEMS = json.load(f)
 
-# Material category patterns for filtering
-MATERIAL_PATTERNS = {
-    "Ingot": ["Ingot", "Nugget", "Plate"],
-    "Lumber": ["Lumber", "Plank", "Log", "Branch"],
-    "Cloth": ["Cloth", "Serge", "Velvet", "Twine", "Felt", "Canvas"],
-    "Leather": ["Leather", "Hide", "Skin"],
-    "Reagent": ["Oil", "Alkahest", "Alumen", "Natron", "Putty"],
-    "Consumable": ["Potion", "Ether", "Elixir", "Tincture", "Draught", "Medicine"],
-    "Food": ["Soup", "Stew", "Bread", "Pie", "Steak", "Grilled", "Roasted", "Risotto", "Pasta", "Salad"]
+# Material category patterns for filtering - items must END with these
+# This is more reliable than substring matching
+MATERIAL_SUFFIXES = {
+    "Ingot": ["Ingot", "Nugget"],
+    "Lumber": ["Lumber", "Plank"],
+    "Cloth": ["Cloth", "Serge", "Velvet", "Twine", "Felt", "Canvas", "Brocade"],
+    "Leather": ["Leather"],
+    "Reagent": ["Alkahest", "Alumen", "Natron", "Putty", "Solution", "Flux", "Mordant", "Ite"],
 }
 
 # Crystal item IDs (to exclude from ingredient cost calculations)
@@ -110,6 +109,11 @@ async def get_recipe_profit(
     # Fetch prices (batched - Universalis supports up to 100 items per request)
     prices = await fetch_prices_batched(world, list(all_item_ids))
     
+    # Fetch DC-wide prices for output items
+    dc = WORLD_TO_DC.get(world)
+    output_item_ids = [r["outputItemId"] for r in filtered_recipes]
+    dc_prices = await fetch_dc_prices(dc, output_item_ids[:100]) if dc else {}
+    
     # Calculate profit for each recipe
     results = []
     for recipe in filtered_recipes:
@@ -141,6 +145,13 @@ async def get_recipe_profit(
         profit_per_item = profit / recipe["outputQuantity"] if recipe["outputQuantity"] > 0 else 0
         profit_margin = (profit / total_material_cost * 100) if total_material_cost > 0 else 0
         
+        # DC prices
+        dc_price_data = dc_prices.get(str(recipe["outputItemId"]), {})
+        dc_sell_price = dc_price_data.get("minPrice", 0)
+        dc_sell_world = dc_price_data.get("minWorld", "")
+        dc_total_value = dc_sell_price * recipe["outputQuantity"]
+        dc_profit = dc_total_value - total_material_cost if dc_sell_price > 0 else 0
+        
         results.append({
             **recipe,
             "outputSellPrice": output_sell_price,
@@ -150,6 +161,11 @@ async def get_recipe_profit(
             "profitPerItem": round(profit_per_item),
             "profitMargin": round(profit_margin, 1),
             "isProfitable": profit > 0,
+            # DC prices
+            "dcSellPrice": dc_sell_price,
+            "dcSellWorld": dc_sell_world,
+            "dcTotalValue": dc_total_value,
+            "dcProfit": round(dc_profit),
             "materials": materials_breakdown
         })
     
@@ -158,6 +174,7 @@ async def get_recipe_profit(
     
     return {
         "world": world,
+        "dataCenter": dc,
         "count": len(results),
         "fetchedAt": int(time() * 1000),
         "recipes": results
@@ -232,6 +249,71 @@ async def fetch_prices_batched(world: str, item_ids: list[int]) -> dict:
     return prices
 
 
+# Map worlds to their data centers
+WORLD_TO_DC = {}
+DATA_CENTERS = {
+    "Aether": ["Adamantoise", "Cactuar", "Faerie", "Gilgamesh", "Jenova", "Midgardsormr", "Sargatanas", "Siren"],
+    "Primal": ["Behemoth", "Excalibur", "Exodus", "Famfrit", "Hyperion", "Lamia", "Leviathan", "Ultros"],
+    "Crystal": ["Balmung", "Brynhildr", "Coeurl", "Diabolos", "Goblin", "Malboro", "Mateus", "Zalera"],
+    "Dynamis": ["Halicarnassus", "Maduin", "Marilith", "Seraph"],
+    "Chaos": ["Cerberus", "Louisoix", "Moogle", "Omega", "Phantom", "Ragnarok", "Sagittarius", "Spriggan"],
+    "Light": ["Alpha", "Lich", "Odin", "Phoenix", "Raiden", "Shiva", "Twintania", "Zodiark"],
+    "Elemental": ["Aegis", "Atomos", "Carbuncle", "Garuda", "Gungnir", "Kujata", "Tonberry", "Typhon"],
+    "Gaia": ["Alexander", "Bahamut", "Durandal", "Fenrir", "Ifrit", "Ridill", "Tiamat", "Ultima"],
+    "Mana": ["Anima", "Asura", "Chocobo", "Hades", "Ixion", "Masamune", "Pandaemonium", "Titan"],
+    "Meteor": ["Belias", "Mandragora", "Ramuh", "Shinryu", "Unicorn", "Valefor", "Yojimbo", "Zeromus"],
+    "Materia": ["Bismarck", "Ravana", "Sephirot", "Sophia", "Zurvan"],
+}
+for dc, worlds in DATA_CENTERS.items():
+    for world in worlds:
+        WORLD_TO_DC[world] = dc
+
+
+async def fetch_dc_prices(dc: str, item_ids: list[int]) -> dict:
+    """Fetch DC-wide prices and find the lowest price per item."""
+    if not item_ids or not dc:
+        return {}
+    
+    await universalis_limiter.acquire()
+    
+    # Limit to 100 items per request
+    batch_ids = ",".join(str(id) for id in item_ids[:100])
+    
+    try:
+        async with httpx.AsyncClient() as client:
+            response = await client.get(
+                f"{UNIVERSALIS_BASE}/{dc}/{batch_ids}",
+                params={"listings": 10, "entries": 0},
+                headers={"User-Agent": "FFXIVCompanion/1.0"},
+                timeout=30.0
+            )
+            response.raise_for_status()
+            data = response.json()
+    except Exception as e:
+        print(f"DC price fetch error: {e}")
+        return {}
+    
+    def find_min_listing(listings):
+        min_price, min_world = 0, ""
+        for listing in listings:
+            price = listing.get("pricePerUnit", 0)
+            if price > 0 and (min_price == 0 or price < min_price):
+                min_price = price
+                min_world = listing.get("worldName", "")
+        return min_price, min_world
+    
+    results = {}
+    if "itemID" in data:
+        min_price, min_world = find_min_listing(data.get("listings", []))
+        results[str(data["itemID"])] = {"minPrice": min_price, "minWorld": min_world}
+    elif "items" in data:
+        for item_id, item_data in data["items"].items():
+            min_price, min_world = find_min_listing(item_data.get("listings", []))
+            results[item_id] = {"minPrice": min_price, "minWorld": min_world}
+    
+    return results
+
+
 @router.get("/crafting/categories")
 async def get_categories():
     """Get unique crafting categories."""
@@ -240,10 +322,11 @@ async def get_categories():
 
 
 def get_material_category(name: str) -> str:
-    """Determine the material category based on item name patterns."""
-    for category, patterns in MATERIAL_PATTERNS.items():
-        for pattern in patterns:
-            if pattern.lower() in name.lower():
+    """Determine the material category based on item name suffixes."""
+    # Use suffix matching - item name must END with the pattern
+    for category, suffixes in MATERIAL_SUFFIXES.items():
+        for suffix in suffixes:
+            if name.endswith(suffix):
                 return category
     return "Other"
 
@@ -331,21 +414,24 @@ async def get_bulk_material_profit(
         for ing in item["ingredients"]:
             all_item_ids.add(ing["itemId"])
     
-    # Fetch prices
+    # Fetch server prices
     prices = await fetch_prices_batched(world, list(all_item_ids))
+    
+    # Fetch DC-wide prices for output items (for comparison)
+    dc = WORLD_TO_DC.get(world)
+    output_item_ids = [item["itemId"] for item in filtered_items]
+    dc_prices = await fetch_dc_prices(dc, output_item_ids) if dc else {}
     
     # Calculate profit for each item
     results = []
     for item in filtered_items:
         output_price = prices.get(str(item["itemId"]), {})
-        output_sell_price = output_price.get("nqPrice", 0) or output_price.get("hqPrice", 0)
+        nq_price_check = output_price.get("nqPrice", 0)
+        hq_price_check = output_price.get("hqPrice", 0)
         
-        # Skip if no sell price
-        if output_sell_price == 0:
+        # Skip if no sell price for either quality
+        if nq_price_check == 0 and hq_price_check == 0:
             continue
-        
-        # Total sell value for all output items
-        total_output_value = output_sell_price * item["yields"]
         
         # Calculate material costs (non-crystals)
         total_material_cost = 0
@@ -388,10 +474,31 @@ async def get_bulk_material_profit(
         # Total cost includes both materials and crystals
         total_cost = total_material_cost + total_crystal_cost
         
-        # Calculate profit (including crystal costs)
+        # Get NQ and HQ prices separately for the output
+        nq_sell_price = output_price.get("nqPrice", 0)
+        hq_sell_price = output_price.get("hqPrice", 0)
+        
+        # Calculate NQ profit
+        nq_total_value = nq_sell_price * item["yields"] if nq_sell_price > 0 else 0
+        nq_profit = nq_total_value - total_cost if nq_total_value > 0 else 0
+        
+        # Calculate HQ profit
+        hq_total_value = hq_sell_price * item["yields"] if hq_sell_price > 0 else 0
+        hq_profit = hq_total_value - total_cost if hq_total_value > 0 else 0
+        
+        # Use best available price for default profit
+        output_sell_price = nq_sell_price or hq_sell_price
+        total_output_value = output_sell_price * item["yields"]
         profit = total_output_value - total_cost
         profit_per_item = profit / item["yields"] if item["yields"] > 0 else 0
         profit_margin = (profit / total_cost * 100) if total_cost > 0 else 0
+        
+        # Get DC price for this item's output
+        dc_price_data = dc_prices.get(str(item["itemId"]), {})
+        dc_sell_price = dc_price_data.get("minPrice", 0)
+        dc_sell_world = dc_price_data.get("minWorld", "")
+        dc_total_value = dc_sell_price * item["yields"]
+        dc_profit = dc_total_value - total_cost if dc_sell_price > 0 else 0
         
         results.append({
             "itemId": item["itemId"],
@@ -400,12 +507,24 @@ async def get_bulk_material_profit(
             "level": item["level"],
             "yields": item["yields"],
             "category": item["category"],
+            # Server prices - separate NQ and HQ
+            "nqPrice": nq_sell_price,
+            "hqPrice": hq_sell_price,
+            "nqProfit": round(nq_profit),
+            "hqProfit": round(hq_profit),
+            # Legacy/default (uses best available)
             "sellPrice": output_sell_price,
             "totalOutputValue": total_output_value,
+            "profit": round(profit),
+            # DC prices
+            "dcSellPrice": dc_sell_price,
+            "dcSellWorld": dc_sell_world,
+            "dcTotalValue": dc_total_value,
+            "dcProfit": round(dc_profit),
+            # Costs
             "totalMaterialCost": round(total_material_cost),
             "totalCrystalCost": round(total_crystal_cost),
             "totalCost": round(total_cost),
-            "profit": round(profit),
             "profitPerCraft": round(profit),
             "profitMargin": round(profit_margin, 1),
             "isProfitable": profit > 0,
@@ -421,6 +540,7 @@ async def get_bulk_material_profit(
     
     return {
         "world": world,
+        "dataCenter": dc,
         "count": len(results),
         "fetchedAt": int(time() * 1000),
         "materials": results

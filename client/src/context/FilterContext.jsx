@@ -13,6 +13,11 @@ export function FilterProvider({ children }) {
         return localStorage.getItem('selectedExpansion') || 'All';
     });
 
+    // Price display preference: 'server' or 'dcLowest'
+    const [pricePreference, setPricePreference] = useState(() => {
+        return localStorage.getItem('pricePreference') || 'server';
+    });
+
     // Persist to localStorage
     useEffect(() => {
         if (selectedWorld) {
@@ -24,11 +29,17 @@ export function FilterProvider({ children }) {
         localStorage.setItem('selectedExpansion', selectedExpansion);
     }, [selectedExpansion]);
 
+    useEffect(() => {
+        localStorage.setItem('pricePreference', pricePreference);
+    }, [pricePreference]);
+
     const value = {
         selectedWorld,
         setSelectedWorld,
         selectedExpansion,
-        setSelectedExpansion
+        setSelectedExpansion,
+        pricePreference,
+        setPricePreference
     };
 
     return (

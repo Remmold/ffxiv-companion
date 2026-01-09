@@ -47,33 +47,66 @@ const CLASS_ICONS = { Miner: '⛏️', Botanist: '🌿', Fisher: '🎣' };
 const MIN_GIL_OPTIONS = [0, 500, 1000, 2000, 5000, 10000];
 const EXPANSION_OPTIONS = ['All', 'DT', 'EW', 'ShB', 'SB', 'HW', 'ARR'];
 
+// World to DC mapping for price lookups
+const WORLD_TO_DC = {
+    // NA
+    Adamantoise: 'Aether', Cactuar: 'Aether', Faerie: 'Aether', Gilgamesh: 'Aether', Jenova: 'Aether', Midgardsormr: 'Aether', Sargatanas: 'Aether', Siren: 'Aether',
+    Behemoth: 'Primal', Excalibur: 'Primal', Exodus: 'Primal', Famfrit: 'Primal', Hyperion: 'Primal', Lamia: 'Primal', Leviathan: 'Primal', Ultros: 'Primal',
+    Balmung: 'Crystal', Brynhildr: 'Crystal', Coeurl: 'Crystal', Diabolos: 'Crystal', Goblin: 'Crystal', Malboro: 'Crystal', Mateus: 'Crystal', Zalera: 'Crystal',
+    Halicarnassus: 'Dynamis', Maduin: 'Dynamis', Marilith: 'Dynamis', Seraph: 'Dynamis',
+    // EU
+    Cerberus: 'Chaos', Louisoix: 'Chaos', Moogle: 'Chaos', Omega: 'Chaos', Phantom: 'Chaos', Ragnarok: 'Chaos', Sagittarius: 'Chaos', Spriggan: 'Chaos',
+    Alpha: 'Light', Lich: 'Light', Odin: 'Light', Phoenix: 'Light', Raiden: 'Light', Shiva: 'Light', Twintania: 'Light', Zodiark: 'Light',
+};
+
 export default function OverlayPage() {
     // Read filters from localStorage
     const [world, setWorld] = useState(() => localStorage.getItem('overlay-world') || localStorage.getItem('selectedWorld') || 'Ragnarok');
     const [expansion, setExpansion] = useState(() => localStorage.getItem('overlay-expansion') || 'All');
     const [nodes, setNodes] = useState([]);
     const [prices, setPrices] = useState({});
+    const [dcPrices, setDcPrices] = useState({});
     const [countdown, setCountdown] = useState({ etMinutes: 120, realMinutes: 6 });
     const [alarms, setAlarms] = useState(getAlarms());
     const [spawnAlarmEnabled, setSpawnAlarmEnabled] = useState(() => localStorage.getItem('spawn-window-alarm') === 'true');
     const [minGilThreshold, setMinGilThreshold] = useState(() => parseInt(localStorage.getItem('min-gil-alarm') || '0'));
     const [showSettings, setShowSettings] = useState(false);
+    const [pricePreference, setPricePreference] = useState('server'); // 'server' or 'dcLowest'
+
+    // Listen for price preference changes from Electron
+    useEffect(() => {
+        if (window.electronAPI?.onPricePreferenceChanged) {
+            window.electronAPI.onPricePreferenceChanged((pref) => {
+                setPricePreference(pref);
+            });
+        }
+        // Get initial preference
+        if (window.electronAPI?.getPricePreference) {
+            window.electronAPI.getPricePreference().then(pref => {
+                if (pref) setPricePreference(pref);
+            });
+        }
+    }, []);
 
     // Filter nodes by expansion
     const filteredNodes = expansion === 'All'
         ? nodes
         : nodes.filter(n => n.expansion === expansion);
 
-    // Get nodes with prices
+    // Get nodes with both server and DC prices
     const nodesWithData = filteredNodes.map(node => {
-        const priceData = prices[node.itemId];
-        const price = priceData?.minPrice || priceData?.nqPrice || 0;
-        return { ...node, price };
+        const serverPriceData = prices[node.itemId];
+        const dcPriceData = dcPrices[node.itemId];
+        const serverPrice = serverPriceData?.minPrice || serverPriceData?.nqPrice || 0;
+        const dcPrice = dcPriceData?.minPrice || 0;
+        const dcWorld = dcPriceData?.minWorld || '';
+        // Use price based on preference
+        const sortPrice = pricePreference === 'dcLowest' && dcPrice > 0 ? dcPrice : serverPrice;
+        return { ...node, serverPrice, dcPrice, dcWorld, price: sortPrice };
     });
 
     const active = nodesWithData.filter(n => n.isActive && n.price > 0).sort((a, b) => b.price - a.price).slice(0, 2);
     // Upcoming: nodes spawning in the NEXT spawn window (within 2 ET hours = 120 ET minutes)
-    // API returns minutesUntilSpawn in Eorzean Time minutes, not real minutes
     const upcomingThreshold = 120; // 2 ET hours = ~7 real minutes
     const upcoming = nodesWithData.filter(n => !n.isActive && n.price > 0 && n.minutesUntilSpawn <= upcomingThreshold).sort((a, b) => b.price - a.price).slice(0, 1);
 
@@ -114,14 +147,25 @@ export default function OverlayPage() {
         return () => clearInterval(interval);
     }, []);
 
-    // Fetch prices
+    // Fetch prices (both server and DC)
     const fetchPrices = useCallback(async () => {
         if (!world || nodes.length === 0) return;
         try {
             const itemIds = [...new Set(nodes.map(n => n.itemId))].slice(0, 100);
-            const response = await fetch(`/api/prices/${encodeURIComponent(world)}/${itemIds.join(',')}`);
-            const data = await response.json();
-            setPrices(data.prices || {});
+            const idsStr = itemIds.join(',');
+
+            // Fetch server prices
+            const serverRes = await fetch(`/api/prices/${encodeURIComponent(world)}/${idsStr}`);
+            const serverData = await serverRes.json();
+            setPrices(serverData.prices || {});
+
+            // Fetch DC prices (dynamic DC lookup)
+            const dc = WORLD_TO_DC[world];
+            if (dc) {
+                const dcRes = await fetch(`/api/prices/dc/${encodeURIComponent(dc)}/${idsStr}`);
+                const dcData = await dcRes.json();
+                setDcPrices(dcData.prices || {});
+            }
         } catch (err) {
             console.error('Failed to fetch prices:', err);
         }
@@ -240,6 +284,21 @@ export default function OverlayPage() {
                                 {val === 0 ? 'Any' : formatGil(val)}
                             </button>
                         ))}
+                    </div>
+                    <div className="text-xs text-gray-400 mb-1 mt-2">Price Sort:</div>
+                    <div className="flex gap-1">
+                        <button
+                            onClick={() => setPricePreference('server')}
+                            className={`text-xs px-2 py-0.5 rounded flex-1 ${pricePreference === 'server' ? 'bg-blue-500 text-white' : 'bg-gray-700 hover:bg-gray-600'}`}
+                        >
+                            🏠 Server
+                        </button>
+                        <button
+                            onClick={() => setPricePreference('dcLowest')}
+                            className={`text-xs px-2 py-0.5 rounded flex-1 ${pricePreference === 'dcLowest' ? 'bg-blue-500 text-white' : 'bg-gray-700 hover:bg-gray-600'}`}
+                        >
+                            🌐 DC Low
+                        </button>
                     </div>
                 </div>
             )}

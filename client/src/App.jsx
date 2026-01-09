@@ -8,7 +8,10 @@ import GearGuidePage from './pages/GearGuidePage';
 import ChecklistPage from './pages/ChecklistPage';
 import AlliedSocietiesPage from './pages/AlliedSocietiesPage';
 import RetainerVenturesPage from './pages/RetainerVenturesPage';
+import ExchangesPage from './pages/ExchangesPage';
 import OverlayPage from './pages/OverlayPage';
+import AssistantPage from './pages/AssistantPage';
+import AssistantChat from './components/AssistantChat';
 
 export default function App() {
     return (
@@ -17,6 +20,9 @@ export default function App() {
                 <Routes>
                     {/* Overlay route - no layout wrapper */}
                     <Route path="/overlay" element={<OverlayPage />} />
+
+                    {/* Assistant page - full screen, no layout */}
+                    <Route path="/assistant" element={<AssistantPage />} />
 
                     {/* Main app routes with Layout */}
                     <Route path="/*" element={
@@ -29,11 +35,14 @@ export default function App() {
                                 <Route path="/checklist" element={<ChecklistPage />} />
                                 <Route path="/tribes" element={<AlliedSocietiesPage />} />
                                 <Route path="/retainers" element={<RetainerVenturesPage />} />
+                                <Route path="/exchanges" element={<ExchangesPage />} />
                             </Routes>
                         </Layout>
                     } />
                 </Routes>
             </FilterProvider>
+            <AssistantChat />
         </BrowserRouter>
     );
 }
+
